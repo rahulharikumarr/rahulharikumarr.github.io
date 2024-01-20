@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+}
+
+.sticky {
+    background-color: white;
+    position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+    display: flex;
+    height: 85px;
+}
+
+.left {
+    display: flex;
+    /*background-color: red;*/
+    flex: 1;
+    align-items: center;
+}
+
+#mainevent {
+    margin-left: 80px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    /*background-color: purple;*/
+    justify-content: space-between;
+    flex: 1;
+}
+
+.firstimage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/assignment1images/image3.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 760px;
+    height: 600px;
+}
+
+
+.text-container-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondsection {
+    /*border: 0.5rem outset pink;*/
+    display: flex;
+    height: 630px;
+    align-items: center;
+    gap: 60px;
+}
+
+.servicesbox {
+    flex: 3;
+    height: 500px;
+    margin-left: 60px;
+    background-color: #a68e4c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.weddingimage {
+    flex: 6;
+    height: 500px;
+    margin-right: 50px;
+    background-image: url("../images/assignment1images/image1.png");
+
+}
+
+.thirdsection {
+    height: 400px;
+    border: 0.5rem outset pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
