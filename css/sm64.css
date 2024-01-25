@@ -8,7 +8,16 @@ body {
 	position: sticky;
 	top: 0;
     display: flex;
-    height: 85px;
+    height: 75px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;   
 }
 
 .left {
@@ -33,46 +42,69 @@ body {
 .firstimage {
     display: flex;
     justify-content: center;
-    align-items: center;
     background-image: url("../images/assignment1images/image3.png");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    min-height: 760px;
+    min-height: 720px;
     height: 600px;
 }
 
 
 .text-container-1 {
+    padding-top: 160px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: 14px;
+    font-size: 50px;
+    color: white;
+}
+
+.text-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .secondsection {
     /*border: 0.5rem outset pink;*/
     display: flex;
-    height: 630px;
+    height: 560px;
     align-items: center;
     gap: 60px;
 }
 
 .servicesbox {
     flex: 3;
-    height: 500px;
+    height: 430px;
     margin-left: 60px;
-    background-color: #a68e4c;
+    background-color: #AF9453;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .weddingimage {
-    flex: 6;
-    height: 500px;
+    flex: 5;
+    height: 430px;
+    width: 500;
     margin-right: 50px;
-    background-image: url("../images/assignment1images/image1.png");
 
+}
+
+#flower-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    width: 300px;;
+    background-image: url("../images/assignment1images/flower.png");
+    background-size: 350px;
+    background-position: bottom 70% left 50%;
 }
 
 .thirdsection {
@@ -82,4 +114,122 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.fourthsection {
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5rem outset black;
+}
+
+.third-image-container {
+    height: 540px;
+    width: 800px;
+    background-image: url("../images/assignment1images/image2.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.gallerybox {
+    display: flex;
+    flex-direction: column;
+    background-color: #AF9453;
+    height: 430px;
+    width: 230px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.finalsection {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    background-color: #AF9453;
+    height: 170px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#footer-text {
+    padding-left: 8px;
+}
+
+#footer-text-1 {
+    padding-left: 4px;
+}
+
+#address {
+    flex: 1.5;
+    height: 80px;
+    width: 160px;
+    padding-left: 70px;
+    display: flex;
+    flex-direction: column;
+    border-right: 0.5px solid white;;
+}
+
+#contact {
+    flex: 1.5;
+    height: 80px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    border-right: 0.5px solid white;;
+}
+
+#copyright {
+    flex: 2;
+    height: 80px;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#consultationbuttonholder {
+    flex: 3;
+
+    height: 80px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -15px;
+}
+
+#transparent-button-1 {   
+
+    width: 140px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 0.7px solid white;
+    height: 35px;
+    cursor:pointer;
+    overflow: hidden;
+}
+
+#transparent-button-2 {   
+
+        width: 200px;
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: 0.7px solid white;
+        height: 35px;
+        cursor:pointer;
+        overflow: hidden;        
+
 }
