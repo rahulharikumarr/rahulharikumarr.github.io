@@ -131,7 +131,7 @@ body {
 }
 
 .fourthsection {
-    height: 700px;
+    height: 680px;
     width: 1239px;
     display: flex;
     justify-content: center;
@@ -140,7 +140,7 @@ body {
 
 .third-image-container {
     /*border: 0.5rem outset pink;*/
-    height: 560px;
+    height: 600px;
     width: 1079px;
     background-image: url("../images/assignment1images/image2.png");
     background-attachment: fixed;
@@ -166,7 +166,7 @@ body {
 }
 
 .finalsection {
-    height: 240px;
+    height: 270px;
     width: 1239px;
     display: flex;
     justify-content: center;
@@ -176,7 +176,7 @@ body {
 .footer {
     
     background-color: #AF9453;
-    height: 170px;
+    height: 200px;
     width: 1079px;
     display: flex;
     align-items: center;
