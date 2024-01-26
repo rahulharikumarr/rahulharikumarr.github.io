@@ -47,9 +47,8 @@ body {
     width: 1239px;
     background-attachment: fixed;
     background-position: 50% 65%;
-    background-size: 100%;
+    background-size: 1239px 1330px;
     min-height: 775px;
-    height: 600px;
 }
 
 
