@@ -199,6 +199,7 @@ body {
     padding-left: 70px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 
 }
 
@@ -208,7 +209,7 @@ body {
     border-right: 1px solid white;
     top: 0%;
     right: 0;
-    height: 45px;
+    height: 58px;
     width: 0.5px;
 }
 
@@ -219,6 +220,7 @@ body {
     width: 160px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
     
 }
 
@@ -228,7 +230,7 @@ body {
     border-right: 1px solid white;
     top: 0%;
     right: 0;
-    height: 45px;
+    height: 58px;
     width: 0.5px;
 }
 
@@ -238,6 +240,7 @@ body {
     width: 170px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 
 }
 
@@ -249,7 +252,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: -15px;
+    margin-left: 80px;
 }
 
 #transparent-button-1 {   
@@ -270,6 +273,18 @@ body {
     background-repeat:no-repeat;
     border: 0.7px solid white;
     height: 35px;
+    cursor:pointer;
+    overflow: hidden;        
+
+}
+
+#transparent-button-3 {   
+
+    width: 210px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 0.7px solid white;
+    height: 50px;
     cursor:pointer;
     overflow: hidden;        
 
