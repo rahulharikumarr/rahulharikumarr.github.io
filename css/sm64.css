@@ -46,7 +46,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    min-height: 720px;
+    min-height: 710px;
     height: 600px;
 }
 
@@ -71,14 +71,16 @@ body {
 .secondsection {
     /*border: 0.5rem outset pink;*/
     display: flex;
-    height: 560px;
+    justify-content: center;
+    height: 550px;
     align-items: center;
     gap: 60px;
 }
 
 .servicesbox {
-    flex: 3;
-    height: 430px;
+    flex-basis: 4;
+    height: 460px;
+    width: 270px;
     margin-left: 60px;
     background-color: #AF9453;
     display: flex;
@@ -89,10 +91,10 @@ body {
 }
 
 .weddingimage {
-    flex: 5;
-    height: 430px;
-    width: 500;
-    margin-right: 50px;
+    flex-basis: 5;
+    height: 460px;
+    max-width: 530px;
+    margin-right: 40px;
 
 }
 
@@ -118,8 +120,7 @@ body {
 }
 
 .thirdsection {
-    height: 400px;
-    border: 0.5rem outset pink;
+    height: 440px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,12 +132,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0.5rem outset black;
 }
 
 .third-image-container {
-    height: 540px;
-    width: 800px;
+    /*border: 0.5rem outset pink;*/
+    height: 560px;
+    width: 889.2px;
     background-image: url("../images/assignment1images/image2.png");
     background-attachment: fixed;
     background-position: center;
@@ -147,6 +148,7 @@ body {
 }
 
 .gallerybox {
+    /*border: 0.5rem outset pink;*/
     display: flex;
     flex-direction: column;
     background-color: #AF9453;
@@ -155,7 +157,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 50px;
-    margin-top: 20px;
+    margin-top: 60px;
 
 }
 
@@ -189,23 +191,44 @@ body {
 }
 
 #address {
+    position: relative;
     flex: 1.5;
     height: 80px;
     width: 160px;
     padding-left: 70px;
     display: flex;
     flex-direction: column;
-    border-right: 0.5px solid white;
+
+}
+
+#address::after {
+    content: "";
+    position: absolute;
+    border-right: 1px solid white;
+    top: 0%;
+    right: 0;
+    height: 45px;
+    width: 0.5px;
 }
 
 #contact {
     flex: 1.5;
+    position: relative;
     height: 80px;
     width: 160px;
     display: flex;
     flex-direction: column;
-    border-right: 0.5px solid white;
     
+}
+
+#contact::after {
+    content: "";
+    position: absolute;
+    border-right: 1px solid white;
+    top: 0%;
+    right: 0;
+    height: 45px;
+    width: 0.5px;
 }
 
 #copyright {
@@ -241,12 +264,12 @@ body {
 
 #transparent-button-2 {   
 
-        width: 200px;
-        background-color: Transparent;
-        background-repeat:no-repeat;
-        border: 0.7px solid white;
-        height: 35px;
-        cursor:pointer;
-        overflow: hidden;        
+    width: 210px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 0.7px solid white;
+    height: 35px;
+    cursor:pointer;
+    overflow: hidden;        
 
 }
