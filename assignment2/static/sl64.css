@@ -101,6 +101,7 @@ input::placeholder {
 .nav {
     display: none;
     margin-top: 100px;
+
     background-color: #eeeeee;
     width: 1000px;
     min-height: 70px;
@@ -113,4 +114,27 @@ input::placeholder {
     padding: 20px;
     justify-content: center;
     align-items: center;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
+
+.nav-element:hover {
+    transition: 0.2s ease-in;
+    background-color: #a5a8ad;
+  }
+
+#company_parent {
+    display: flex;
+    flex-direction: column;
+}
+
+#company_element_container{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 0.5px grey;
+}
+
