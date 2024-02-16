@@ -130,11 +130,70 @@ input::placeholder {
     flex-direction: column;
 }
 
+#stock_parent {
+    display: flex;
+    flex-direction: column;
+}
+
 #company_element_container{
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: solid 0.5px grey;
+    border-bottom: solid 0.2px grey;
+}
+
+#stock_element_container{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 0.2px grey;
+}
+
+#active_button {
+    background-color: #a5a8ad;
+}
+
+.active-button {
+    background-color: #a5a8ad;
+}
+
+#div-2 {
+    background-color: #ec3043;
+    min-width: 35px;
+    min-height: 50px;
+}
+
+#div-3 {
+    background-color: #9e7670;
+    min-width: 40px;
+    min-height: 50px;
+   }
+
+   #div-4 {
+    background-color: #629d74;
+    min-width: 45px;
+    min-height: 50px;
+   }
+
+   #div-5 {
+    background-color: #93dfaf;
+    min-width: 50px;
+    min-height: 50px;
+   }
+
+   #div-6 {
+    background-color: #2adf82;
+    min-width: 55px;
+    min-height: 50px;
+   }
+
+.recommendation-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
 }
 

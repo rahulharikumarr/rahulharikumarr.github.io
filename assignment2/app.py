@@ -46,6 +46,24 @@ def summary():
     return jsonify(summaryresult)
 
 
+@app.route('/recommendation')
+def recommendation():
+    symbol = request.args.get('symbol')
+
+    if not symbol:
+        return jsonify({"error": "Please provide a valid stock ticker"}), 400
+    
+    recommendation_url = f'https://finnhub.io/api/v1/stock/recommendation?symbol={symbol}&token={FINNHUB_API_KEY}'
+    recommendation_response = requests.get(recommendation_url)
+    recommendation_data = recommendation_response.json()
+    recommendationresult = {
+        "symbol": symbol,
+        "recommendation_data": recommendation_data
+    }
+    return jsonify(recommendationresult)
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
