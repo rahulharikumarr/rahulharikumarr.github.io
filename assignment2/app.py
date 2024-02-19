@@ -1,11 +1,19 @@
 import requests
 from flask import Flask, request, jsonify, send_from_directory
+from datetime import *; 
+from dateutil.relativedelta import *
 
 app = Flask(__name__, static_url_path='/static')
 
 # Replace these with your actual API keys
 FINNHUB_API_KEY = 'cn58g2pr01qocjm1h3vgcn58g2pr01qocjm1h400'
 POLYGON_API_KEY = 'uG0_5wUbBaeb3LLpkRECr5XhErRJobLY'
+today = date.today()
+start = today + relativedelta(months=-6, days=-1)
+newsdatestart = today + relativedelta(days=-30)
+
+print(start)
+
 
 @app.route('/')
 def index():
@@ -62,6 +70,39 @@ def recommendation():
     }
     return jsonify(recommendationresult)
 
+@app.route('/chartdata')
+def chartdata():
+    symbol = request.args.get('symbol')
+
+    if not symbol:
+        return jsonify({"error": "Please provide a valid stock ticker"}), 400
+
+    chartdata_url = f'https://api.polygon.io/v2/aggs/ticker/{symbol}/range/1/day/{start}/{today}?adjusted=true&sort=asc&apiKey={POLYGON_API_KEY}'
+    chartdata_response = requests.get(chartdata_url)
+    chartdata_data = chartdata_response.json()
+    chartdataresult = {
+        "symbol": symbol,
+        "chartdata_data" : chartdata_data
+    }
+
+    return jsonify(chartdataresult)
+
+@app.route('/news')
+def news():
+    symbol = request.args.get('symbol')
+
+    if not symbol:
+        return jsonify({"error": "Please provide a valid stock ticker"}), 400
+
+    news_url = f'https://finnhub.io/api/v1/company-news?symbol={symbol}&from={newsdatestart}&to={today}&token={FINNHUB_API_KEY}'
+    news_response = requests.get(news_url)
+    news_data = news_response.json()
+    newsresult = {
+        "symbol": symbol,
+        "news_data" : news_data
+    }
+
+    return jsonify(newsresult)
 
 
 
