@@ -1,109 +1,242 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     var nav = document.querySelector('.nav');
+    var storedData = null;
+
 
     
     function handleSearch(event) {
-
         var symbol = document.getElementById('search').value;
-    
+
         if (symbol.trim() !== '') {
             event.preventDefault();
 
-            fetch(`/company?symbol=${symbol}`)
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error(`The API request failed, here is the status: ${response.status}`);
+            // Fetch data from all endpoints
+            Promise.all([
+                fetch(`/summary?symbol=${symbol}`).then(response => response.json()),
+                fetch(`/recommendation?symbol=${symbol}`).then(response => response.json()),
+                fetch(`/company?symbol=${symbol}`).then(response => response.json()),
+                fetch(`/chartdata?symbol=${symbol}`).then(response => response.json()),
+                fetch(`/news?symbol=${symbol}`).then(response => response.json())
+            ])
+                .then(([summaryData, recommendationData, companyData, chartData, newsData]) => {
+                    if (
+                        isEmpty(summaryData.summary_data) ||
+                        isEmpty(recommendationData.recommendation_data) ||
+                        isEmpty(companyData.company_data) ||
+                        isEmpty(chartData.chartdata_data) ||
+                        isEmpty(newsData.news_data)
+                    ) {
+                        throw new Error('Error: No record has been found. Please enter a valid stock symbol');
                     }
-                })
-                .then(data => {
-                    if (isEmpty(data.company_data)) 
-                    {
-                        displayErrorMessage(`Error: No record has been found. Please enter a valid stock symbol`);
-                    } else 
-                    {
 
-                        console.log(data);
-                        var img = data.company_data.logo
-                        var name = data.company_data.name
-                        var ticker = data.company_data.ticker
-                        var exchange = data.company_data.exchange
-                        var start = data.company_data.ipo
-                        var category = data.company_data.finnhubIndustry
-                        generateCompanyTab(img, name, ticker, exchange, start, category)
+                    console.log(summaryData);
+                    console.log(recommendationData);
+                    console.log(companyData);
+                    console.log(chartData);
+                    console.log(newsData);
+                
+                    // Store the fetched data
+                    storedData = {
+                        summary: summaryData.summary_data,
+                        recommendation: recommendationData.recommendation_data,
+                        company: companyData.company_data,
+                        chart: chartData.chartdata_data,
+                        news: newsData.news_data
+                    };
 
-                        nav.style.display = 'flex';
-                        if(document.getElementById('error-message'))
-                        {
-                            var errorDiv = document.querySelector('#error-message');
-                            errorDiv.style.display = 'none'
-                        }
+                    // Generate the company tab
+                    generateCompanyTab(
+                        storedData.company.logo,
+                        storedData.company.name,
+                        storedData.company.ticker,
+                        storedData.company.exchange,
+                        storedData.company.ipo,
+                        storedData.company.finnhubIndustry
+                    );
+
+                    // Display the navigation bar
+                    var nav = document.querySelector('.nav');
+                    nav.style.display = 'flex';
+
+                    // Hide error message if it exists
+                    if (document.getElementById('error-message')) {
+                        var errorDiv = document.querySelector('#error-message');
+                        errorDiv.style.display = 'none';
                     }
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error.message);
+                    displayErrorMessage(error.message);
                 });
         } else {
             console.log('Please enter a valid stock ticker symbol.');
         }
-
     }
 
 
     function stockButtonClicked(event) {
-        var symbol = document.getElementById('search').value;
-        
-        //used because we need to get data from multiple endpoints
-        Promise.all([
-            fetch(`/summary?symbol=${symbol}`).then(response => response.json()),
-            fetch(`/recommendation?symbol=${symbol}`).then(response => response.json()),
-            fetch(`/company?symbol=${symbol}`).then(response => response.json())
-        ])
-        .then(([summaryData, recommendationData, companyData]) => {
-            if (isEmpty(summaryData.summary_data) || isEmpty(recommendationData.recommendation_data) || isEmpty(companyData.company_data)) {
-                throw new Error('Error: No record has been found. Please enter a valid stock symbol');
-            }
-    
-            console.log(summaryData);
-            console.log(recommendationData);
-            console.log(companyData);
-    
-            var summaryticker = companyData.company_data.ticker;
-            var day = summaryData.summary_data.t;
-            var closing = summaryData.summary_data.pc;
-            var opening = summaryData.summary_data.o;
-            var high = summaryData.summary_data.h;
-            var low = summaryData.summary_data.l;
-            var change = summaryData.summary_data.d;
-            var changepercent = summaryData.summary_data.dp;
-    
-            var mostRecentData = findMostRecentData(recommendationData.recommendation_data);
-    
-            if (mostRecentData) {
-                var strongSell = mostRecentData.strongSell;
-                var sell = mostRecentData.sell;
-                var hold = mostRecentData.hold;
-                var buy = mostRecentData.buy;
-                var strongBuy = mostRecentData.strongBuy;
-            }
-    
-    
-            var tab_containers = document.querySelector('.tab-containers');
-            var stock_parent = document.createElement('div');
-            stock_parent.id = 'stock_parent';
-            stock_parent.classList.add('company-details');
-            tab_containers.appendChild(stock_parent);
-    
-            generateStockTab(summaryticker, day, closing, opening, high, low, change, changepercent, strongSell, sell, hold, buy, strongBuy);
 
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error.message);
-            displayErrorMessage(error.message);
-        });
+        var existing_stock_parent = document.getElementById('stock_parent')
+
+        if(!existing_stock_parent)
+        {
+        if (!storedData || !storedData.company) {
+            console.error('Error: No company data found. Please search for a stock symbol first.');
+            return;
+        }
+    
+        var summaryData = storedData.summary;
+        var recommendationData = storedData.recommendation;
+        var companyData = storedData.company;
+    
+        var summaryticker = companyData.ticker;
+        var day = summaryData.t;
+        var closing = summaryData.pc;
+        var opening = summaryData.o;
+        var high = summaryData.h;
+        var low = summaryData.l;
+        var change = summaryData.d;
+        var changepercent = summaryData.dp;
+    
+        var mostRecentData = findMostRecentData(recommendationData);
+    
+        if (mostRecentData) {
+            var strongSell = mostRecentData.strongSell;
+            var sell = mostRecentData.sell;
+            var hold = mostRecentData.hold;
+            var buy = mostRecentData.buy;
+            var strongBuy = mostRecentData.strongBuy;
+        }
+    
+        var tab_containers = document.querySelector('.tab-containers');
+        var stock_parent = document.createElement('div');
+        stock_parent.id = 'stock_parent';
+        stock_parent.classList.add('company-details');
+        tab_containers.appendChild(stock_parent);
+    
+        generateStockTab(summaryticker, day, closing, opening, high, low, change, changepercent, strongSell, sell, hold, buy, strongBuy);
     }
+    }
+    
+
+    function chartButtonClicked(event) {
+        var symbol = document.getElementById('search').value;
+
+        var existingStockParent = document.getElementById('stock_parent')
+        if (existingStockParent) 
+        {
+            existingStockParent.remove()
+            console.log('should be removed hmm')
+        }
+        
+        
+    
+        if (symbol.trim() !== '') {
+            event.preventDefault();
+    
+            // Check if chart data is already available in storedData
+            if (storedData && storedData.chart && storedData.chart.chartdata_data) {
+                renderChart(storedData);
+            } else {
+                // If not available, fetch the chart data
+                fetch(`/chartdata?symbol=${symbol}`)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error(`The API request failed, here is the status: ${response.status}`);
+                        }
+                    })
+                    .then(data => {
+                        if (!isEmpty(data.chartdata_data) && Array.isArray(data.chartdata_data.results) && data.chartdata_data.results.length > 0) {
+                            // Update the stored data with the new chart data
+                            storedData = {
+                                ...storedData,
+                                chart: data.chartdata_data
+                            };
+    
+                            // If there was an error message, hide it
+                            if (document.getElementById('error-message')) {
+                                var errorDiv = document.querySelector('#error-message');
+                                errorDiv.style.display = 'none';
+                            }
+    
+                            // Call the renderChart function with the updated data
+                            renderChart(storedData);
+                        } else {
+                            displayErrorMessage('Error: No chart data has been found. Please enter a valid stock symbol');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching chart data:', error.message);
+                        displayErrorMessage(error.message);
+                    });
+            }
+        } else {
+            console.log('Please enter a valid stock ticker symbol.');
+        }
+    }
+    
+
+    function renderChart(dataWrapper) {
+    var chartData = dataWrapper.chart;
+
+    if (!chartData || !chartData.results || chartData.results.length === 0) {
+        console.error('Error: No chart data has been found. Please enter a valid stock symbol.', chartData);
+        // Handle the error or return early, depending on your requirements.
+        return;
+    }
+
+    console.log('Rendering chart with data:', chartData);
+
+    var dates = chartData.results.map(entry => new Date(entry.t * 1000));
+    var stockPrices = chartData.results.map(entry => [entry.t * 1000, entry.c]); // [timestamp, stock price]
+    var volumes = chartData.results.map(entry => [entry.t * 1000, entry.v]); // [timestamp, volume]
+
+    var chartContainer = document.getElementById('chart-container');
+    if (!chartContainer) {
+        chartContainer = document.createElement('div');
+        chartContainer.id = 'chart-container';
+        var tabContainers = document.querySelector('.tab-containers');
+        tabContainers.appendChild(chartContainer);
+    }
+
+    Highcharts.chart('chart-container', {
+        title: {
+            text: 'Stock Price and Volume Chart'
+        },
+        xAxis: {
+            categories: dates.map(date => date.toLocaleDateString()), // Adjust date formatting if needed
+            type: 'datetime',
+            labels: {
+                format: '{value:%Y-%m-%d}'
+            }
+        },
+        yAxis: [{
+            title: {
+                text: 'Stock Price'
+            },
+            labels: {
+                format: '{value:.2f}' // Adjust formatting if needed
+            },
+            series: [{
+                name: 'Stock Price',
+                data: stockPrices
+            }]
+        }, {
+            title: {
+                text: 'Volume'
+            },
+            opposite: true,
+            series: [{
+                name: 'Volume',
+                type: 'column',
+                data: volumes
+            }]
+        }]
+    });
+}
+    
     
     
     function isEmpty(obj) {
@@ -308,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function () {
         percent_div.id = 'stock_element_container'
         var percent_paragraph = document.createElement('p');
         percent_paragraph.textContent = `Change Percent: ${percent}`
-        change_paragraph.style.fontWeight = 'bold';
+        percent_paragraph.style.fontWeight = 'bold';
         var percentImgElement = document.createElement('img');
         if(percent>0)
         {
@@ -394,13 +527,85 @@ document.addEventListener('DOMContentLoaded', function () {
         stock_parent.appendChild(text_div)
         text_div.appendChild(text)
 
-
-
-
-        
-
-
     }
+
+    function generateNewsCards(data) {
+        // Remove existing company parent if it exists
+        if (document.getElementById('company_parent')) {
+            var existingCompanyParent = document.getElementById('company_parent');
+            if (existingCompanyParent) {
+                existingCompanyParent.remove();
+            }
+        }
+    
+        // Create a new news container
+        var newsContainer = document.createElement('div');
+        newsContainer.id = 'news-container';
+        var tabContainers = document.querySelector('.tab-containers');
+        tabContainers.appendChild(newsContainer);
+    
+        // Filter valid news data
+        const validNewsData = data.news.filter(entry =>
+            entry.image && entry.headline && entry.datetime && entry.url
+        );
+    
+        // Get the first five valid news entries
+        const firstFiveValidNews = validNewsData.slice(0, 5);
+    
+        // Iterate over each valid news entry and create a card
+        firstFiveValidNews.forEach(entry => {
+            var newsCard = document.createElement('div');
+            newsCard.classList.add('news-card');
+    
+            // Create an image element
+            var newsImg = document.createElement('img');
+            newsImg.src = entry.image;
+            newsImg.id = 'news-image';
+            newsCard.appendChild(newsImg);
+    
+            // Create the right container for title, date, and link
+            var newsRightContainer = document.createElement('div');
+            newsRightContainer.id = 'news-right-container';
+    
+            // Create a title element
+            var newsTitle = document.createElement('div');
+            newsTitle.textContent = entry.headline;
+            newsTitle.style.fontWeight = 'bold';
+            newsTitle.style.paddingTop = '10px'
+    
+            // Create a date element
+            var newsDate = document.createElement('div');
+            var formattedDate = new Date(entry.datetime * 1000).toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            newsDate.textContent = formattedDate;
+    
+            // Create a hyperlink for the original post
+            var newsLink = document.createElement('a');
+            newsLink.textContent = 'See Original Post';
+            newsLink.href = entry.url;
+            newsLink.target = '_blank'; // Open the link in a new tab
+            newsLink.style.color = 'blue'; // Change the link color
+    
+            // Append elements to the right container
+            newsRightContainer.appendChild(newsTitle);
+            newsRightContainer.appendChild(newsDate);
+            newsRightContainer.appendChild(newsLink);
+    
+            // Append the right container to the card
+            newsCard.appendChild(newsRightContainer);
+    
+            // Append the card to the news container
+            newsContainer.appendChild(newsCard);
+        });
+    }
+    
+    
+    
+
+    
     
     //code snippet taken using help of https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
     function epochToDate(epoch) {
@@ -454,9 +659,14 @@ if (searchButton) {
     }
     if (chartButton) {
         chartButton.addEventListener('click', buttonClicked);
+        chartButton.addEventListener('click', chartButtonClicked);
+        
     }
     if (newsButton) {
-        newsButton.addEventListener('click', buttonClicked);
+        newsButton.addEventListener('click', buttonClicked)
+        newsButton.addEventListener('click', function() {
+            generateNewsCards(storedData);
+        });
     }
 
 });

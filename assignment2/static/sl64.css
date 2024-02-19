@@ -197,3 +197,37 @@ input::placeholder {
     font-size: 20px;
 }
 
+#news-container {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    gap: 20px;
+}
+
+.news-card {
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: row; 
+    max-width: 1000px;
+    max-height: 180px;
+}
+
+#news-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; 
+    padding: 10px;
+}
+
+#news-right-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+}
+
+#news-left-container {
+    max-width: 50px;
+}
+
+
+
