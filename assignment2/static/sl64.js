@@ -175,65 +175,166 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     function renderChart(dataWrapper) {
-    var chartData = dataWrapper.chart;
-
-    if (!chartData || !chartData.results || chartData.results.length === 0) {
-        console.error('Error: No chart data has been found. Please enter a valid stock symbol.', chartData);
-
-        return;
-    }
-
-    console.log('Rendering chart with data:', chartData);
-
-    var dates = chartData.results.map(entry => new Date(entry.t * 1000));
-    var stockPrices = chartData.results.map(entry => [entry.t * 1000, entry.c]); // [timestamp, stock price]
-    var volumes = chartData.results.map(entry => [entry.t * 1000, entry.v]); // [timestamp, volume]
-
-    var chartContainer = document.getElementById('chart-container');
-    if (!chartContainer) {
-        chartContainer = document.createElement('div');
-        chartContainer.id = 'chart-container';
-        var tabContainers = document.querySelector('.tab-containers');
-        tabContainers.appendChild(chartContainer);
-    }
-
-    Highcharts.chart('chart-container', {
-        title: {
-            text: 'Stock Price and Volume Chart'
-        },
-        xAxis: {
-            categories: dates.map(date => date.toLocaleDateString()), 
-            type: 'datetime',
-            labels: {
-                format: '{value:%Y-%m-%d}'
-            }
-        },
-        yAxis: [{
+        var chartData = dataWrapper.chart;
+    
+        if (!chartData || !chartData.results || chartData.results.length === 0) {
+            console.error('Error: No chart data has been found. Please enter a valid stock symbol.', chartData);
+            return;
+        }
+    
+        console.log('Rendering chart with data:', chartData);
+    
+        
+        chartData.results.sort((a, b) => a.t - b.t);
+    
+        var dates = chartData.results.map(entry => new Date(entry.t));
+        var stockPrices = chartData.results.map(entry => [entry.t, entry.c]);
+        var volumes = chartData.results.map(entry => [entry.t, entry.v]);
+    
+        console.log(dates);
+        console.log(stockPrices);
+        console.log(volumes);
+    
+        var chartContainer = document.getElementById('chart-container');
+        if (!chartContainer) {
+            chartContainer = document.createElement('div');
+            chartContainer.id = 'chart-container';
+            var tabContainers = document.querySelector('.tab-containers');
+            tabContainers.appendChild(chartContainer);
+        }
+    
+        
+        var today = new Date();
+        var formattedDate = today.toISOString().split('T')[0];
+    
+        
+        var maxVolume = Math.max(...volumes.map(entry => entry[1]));
+    
+        Highcharts.stockChart('chart-container', {
+            chart: {
+                zoomType: 'x',
+                events: {
+                    load: function () {
+                      
+                        var sixMonthsAgo = new Date();
+                        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+                        this.xAxis[0].setExtremes(sixMonthsAgo.getTime(), today.getTime());
+                    }
+                }
+            },
             title: {
-                text: 'Stock Price'
+                text: 'Stock Price <Ticker> (' + formattedDate + ')',
+                style: {
+                    color: '#000000' 
+                }
             },
-            labels: {
-                format: '{value:.2f}' 
+            xAxis: {
+                type: 'datetime', 
+                dateTimeLabelFormats: { 
+                    day: '%e %b %Y',
+                    week: '%e %b %Y',
+                    month: '%b %Y',
+                    year: '%Y'
+                }
             },
-            series: [{
-                name: 'Stock Price',
-                data: stockPrices
-            }]
-        }, {
-            title: {
-                text: 'Volume'
+            yAxis: [
+                {
+                    title: {
+                        text: 'Stock Price'
+                    },
+                    labels: {
+                        format: '{value}'
+                    },
+                    opposite: false,
+                },
+                {
+                    title: {
+                        text: 'Volume'
+                    },
+                    labels: {
+                        format: '{value}'
+                    },
+                    opposite: true,
+                    max: maxVolume
+                }
+            ],
+            rangeSelector: {
+                buttons: [
+                    {
+                        type: 'day',
+                        count: 7,
+                        text: '7d'
+                    },
+                    {
+                        type: 'day',
+                        count: 15,
+                        text: '15d'
+                    },
+                    {
+                        type: 'month',
+                        count: 1,
+                        text: '1m'
+                    },
+                    {
+                        type: 'month',
+                        count: 3,
+                        text: '3m'
+                    },
+                    {
+                        type: 'month',
+                        count: 6,
+                        text: '6m'
+                    },
+                    {
+                        type: 'all',
+                        text: 'All'
+                    }
+                ],
+                selected: 2 
             },
-            opposite: true,
-            series: [{
-                name: 'Volume',
-                type: 'column',
-                data: volumes
-            }]
-        }]
-    });
-}
+            plotOptions: {
+                area: {
+                    fillColor: { //used for making the gradietn effect as required
+                        linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                        stops: [
+                            [0, '#0390fc'], 
+                            [1, '#ffffff']  
+                        ]
+                    },
+                    fillOpacity: 0.3, 
+                    lineWidth: 2, 
+                    lineColor: '#0390fc', 
+                    dashStyle: 'Solid' 
+                }
+            },
+            series: [
+                {
+                    name: 'Stock Price',
+                    data: stockPrices,
+                    yAxis: 0,
+                    type: 'area',
+                    tooltip: {
+                        valueDecimals: 2
+                    }
+                },
+                {
+                    name: 'Volume',
+                    data: volumes,
+                    yAxis: 1,
+                    type: 'column', 
+                    tooltip: {
+                        valueDecimals: 0
+                    }
+                }
+            ],
+        });
+    }
     
     
+
+    
+    
+
     
     function isEmpty(obj) {
         for (var key in obj) {
@@ -647,7 +748,6 @@ if (searchButton) {
     if (chartButton) {
         chartButton.addEventListener('click', buttonClicked);
         chartButton.addEventListener('click', chartButtonClicked);
-        
     }
     if (newsButton) {
         newsButton.addEventListener('click', buttonClicked)

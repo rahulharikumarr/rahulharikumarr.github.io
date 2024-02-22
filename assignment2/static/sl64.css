@@ -229,4 +229,9 @@ input::placeholder {
     max-width: 50px;
 }
 
-
+#chart-container {
+    min-width: 800px;
+    min-height: 500px;
+    
+  }
+  
