@@ -230,8 +230,8 @@ input::placeholder {
 }
 
 #chart-container {
-    min-width: 800px;
-    min-height: 500px;
+    min-width: 1000px;
+    min-height: 700px;
     
   }
   

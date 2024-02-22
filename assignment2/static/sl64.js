@@ -223,20 +223,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
             title: {
-                text: 'Stock Price <Ticker> (' + formattedDate + ')',
+                text: 'Stock Price ' + storedData.company.ticker + ' '+ formattedDate,
                 style: {
                     color: '#000000' 
                 }
             },
-            xAxis: {
-                type: 'datetime', 
-                dateTimeLabelFormats: { 
-                    day: '%e %b %Y',
-                    week: '%e %b %Y',
-                    month: '%b %Y',
-                    year: '%Y'
+            subtitle: {
+                text: 'Source: <a href="https://polygon.io/" target="_blank" style="color: purple; text-decoration: underline; cursor: pointer;">Polygon.io</a>',
+                style: {
+                    color: 'purple',
+                    textDecoration: 'underline',
+                    cursor: 'pointer'
                 }
             },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    day: '%e %b',
+                    week: '%e %b',
+                    month: '%b'
+                },
+                //the bit that sets the width of the graph to cover the whole chart x-axis and not leave whitespace.
+                min: chartData.results[0].t,
+                max: chartData.results[chartData.results.length - 1].t
+            },
+            
             yAxis: [
                 {
                     title: {
@@ -246,16 +257,20 @@ document.addEventListener('DOMContentLoaded', function () {
                         format: '{value}'
                     },
                     opposite: false,
+                    min: 160
                 },
                 {
                     title: {
                         text: 'Volume'
                     },
                     labels: {
-                        format: '{value}'
+                        formatter: function () {
+                            return Highcharts.numberFormat(this.value / 1e6, 0) + 'M';
+                        }
                     },
                     opposite: true,
-                    max: maxVolume
+                    max: maxVolume,
+                    tickInterval: 60e6
                 }
             ],
             rangeSelector: {
@@ -284,10 +299,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: 'month',
                         count: 6,
                         text: '6m'
-                    },
-                    {
-                        type: 'all',
-                        text: 'All'
                     }
                 ],
                 selected: 2 
@@ -297,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     fillColor: { //used for making the gradietn effect as required
                         linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
                         stops: [
-                            [0, '#0390fc'], 
+                            [0, '#5bb2f5'], 
                             [1, '#ffffff']  
                         ]
                     },
@@ -305,6 +316,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     lineWidth: 2, 
                     lineColor: '#0390fc', 
                     dashStyle: 'Solid' 
+                },
+                column: {
+                    color: 'black', 
+                    pointWidth: 5
                 }
             },
             series: [
@@ -329,13 +344,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ],
         });
     }
-    
-    
 
-    
-    
-
-    
     function isEmpty(obj) {
         for (var key in obj) {
             if (obj.hasOwnProperty(key)) {
