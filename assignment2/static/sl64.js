@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
     function handleSearch(event) {
+
+        clearContent();
         var symbol = document.getElementById('search').value;
 
         if (symbol.trim() !== '') {
@@ -67,10 +69,36 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log('Please enter a valid stock ticker symbol.');
         }
+
+        if (document.getElementById('company-button')) {
+            // Set the company button as the active button
+            document.getElementById('company-button').classList.add('active-button');
+    
+            // Remove the active class from other buttons
+            var otherButtons = document.querySelectorAll('.nav-element:not(#company-button)');
+            otherButtons.forEach(button => button.classList.remove('active-button'));
+        }
+    }
+
+    function companyTabClicked(event)
+    {
+        clearContent()
+        generateCompanyTab(
+            storedData.company.logo,
+            storedData.company.name,
+            storedData.company.ticker,
+            storedData.company.exchange,
+            storedData.company.ipo,
+            storedData.company.finnhubIndustry
+        );
+        
+
     }
 
 
     function stockButtonClicked(event) {
+
+        clearContent();
 
         var existing_stock_parent = document.getElementById('stock_parent')
 
@@ -116,6 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     function chartButtonClicked(event) {
+
+        clearContent()
         var symbol = document.getElementById('search').value;
 
         var existingStockParent = document.getElementById('stock_parent')
@@ -636,6 +666,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function generateNewsCards(data) {
+
+        clearContent();
         // Remove existing company parent if it exists
         if (document.getElementById('company_parent')) {
             var existingCompanyParent = document.getElementById('company_parent');
@@ -721,6 +753,7 @@ if (searchButton) {
 }
 
     //for buttons to be "active"
+    var deleteButton = document.getElementById('delete')
     var companyButton = document.getElementById('company-button');
     var stockButton = document.getElementById('stock-button');
     var chartButton = document.getElementById('chart-button');
@@ -744,10 +777,14 @@ if (searchButton) {
         return sortedData[0];
     }
 
+    if(deleteButton)
+    {
+        deleteButton.addEventListener('click', deleteButtonClicked)
+    }
 
     if (companyButton) {
         companyButton.addEventListener('click', buttonClicked);
-        companyButton.addEventListener('click', generateCompanyTab);
+        companyButton.addEventListener('click', companyTabClicked);
         
     }
     if (stockButton) {
@@ -765,4 +802,22 @@ if (searchButton) {
         });
     }
 
+    function clearContent() {
+        var tabContainers = document.querySelector('.tab-containers');
+        tabContainers.innerHTML = '';
+    }
+
+    function deleteButtonClicked()
+    {
+        event.preventDefault();
+
+        var searchInput = document.getElementById('search');
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        var nav = document.querySelector('.nav');
+        nav.style.display = 'none';
+        var tabContainers = document.querySelector('.tab-containers');
+        tabContainers.innerHTML = '';
+    }
 });
