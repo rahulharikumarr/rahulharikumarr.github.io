@@ -19,6 +19,13 @@ print(start)
 def index():
     return send_from_directory('static', 'sl64.html')
 
+@app.route('/readiness_check')
+def readiness_check():
+    # Check if the application is ready to serve traffic
+    # Return a successful response (200 OK) if ready, or an error response if not
+    return jsonify({"status": "ok"})
+
+
 
 
 @app.route('/company')

@@ -101,7 +101,7 @@ input::placeholder {
 .nav {
     display: none;
     margin-top: 100px;
-
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #eeeeee;
     width: 1000px;
     min-height: 70px;
@@ -141,6 +141,8 @@ input::placeholder {
     justify-content: center;
     align-items: center;
     border-bottom: solid 0.2px grey;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
 }
 
 #stock_element_container{
@@ -149,6 +151,8 @@ input::placeholder {
     justify-content: center;
     align-items: center;
     border-bottom: solid 0.2px grey;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
 }
 
 #active_button {
@@ -210,6 +214,8 @@ input::placeholder {
     flex-direction: row; 
     max-width: 1000px;
     max-height: 180px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
 }
 
 #news-image {

@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error.message);
+                    clearNavBar()
                     displayErrorMessage(error.message);
                 });
         } else {
@@ -161,9 +162,11 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
     
 
-            if (storedData && storedData.chart && storedData.chart.chartdata_data) {
+            if (storedData.chart.chartdata_data) {
                 renderChart(storedData);
-            } else {
+            } 
+            else 
+            {
 
                 fetch(`/chartdata?symbol=${symbol}`)
                     .then(response => {
@@ -212,18 +215,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
     
-        console.log('Rendering chart with data:', chartData);
-    
         
         chartData.results.sort((a, b) => a.t - b.t);
     
         var dates = chartData.results.map(entry => new Date(entry.t));
         var stockPrices = chartData.results.map(entry => [entry.t, entry.c]);
         var volumes = chartData.results.map(entry => [entry.t, entry.v]);
-    
-        console.log(dates);
-        console.log(stockPrices);
-        console.log(volumes);
     
         var chartContainer = document.getElementById('chart-container');
         if (!chartContainer) {
@@ -239,6 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         
         var maxVolume = Math.max(...volumes.map(entry => entry[1]));
+        var maxStock = Math.max(...stockPrices.map(entry => entry[1]));
     
         Highcharts.stockChart('chart-container', {
             chart: {
@@ -287,7 +285,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         format: '{value}'
                     },
                     opposite: false,
-                    min: 160
+                    tickAmount: 6,
+                    min: 150  // Set this to the minimum value you want
                 },
                 {
                     title: {
@@ -300,9 +299,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     opposite: true,
                     max: maxVolume,
-                    tickInterval: 60e6
+                    min: 0,
+                    tickAmount: 6,
+                    tickInterval: maxVolume/3
                 }
             ],
+                     
             rangeSelector: {
                 buttons: [
                     {
@@ -331,7 +333,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         text: '6m'
                     }
                 ],
-                selected: 2 
+                selected: 2,
+                inputEnabled: false
             },
             plotOptions: {
                 area: {
@@ -342,14 +345,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             [1, '#ffffff']  
                         ]
                     },
-                    fillOpacity: 0.3, 
+                    fillOpacity: 0.1, 
                     lineWidth: 2, 
                     lineColor: '#0390fc', 
-                    dashStyle: 'Solid' 
+                    dashStyle: 'Solid',
+                    pointPlacement: 'on'
                 },
                 column: {
                     color: 'black', 
-                    pointWidth: 5
+                    pointWidth: 5,
+                    pointPlacement: 'on'
                 }
             },
             series: [
@@ -403,76 +408,50 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function generateCompanyTab(img, name, ticker, exchange, start, category) {
-
-
         var existingCompanyParent = document.getElementById('company_parent');
         if (existingCompanyParent) {
-        existingCompanyParent.remove();
+            existingCompanyParent.remove();
         }
         if (!document.getElementById('error-message')) {
-
-
             var company_parent = document.createElement('div');
             company_parent.id = 'company_parent';
-            company_parent.classList.add('company-details'); 
-            var tab_containers = document.querySelector('.tab-containers')
+            company_parent.classList.add('company-details');
+            var tab_containers = document.querySelector('.tab-containers');
             tab_containers.appendChild(company_parent);
     
-
-            var img_div = document.createElement('div')
-            img_div.id = 'company_element_container'
+            function createCompanyRow(container, label, value) {
+                var row_div = document.createElement('div');
+                row_div.id = 'company_element_container';
+            
+                var label_span = document.createElement('span');
+                label_span.innerHTML = label + '&nbsp;'; // Add a space after the label
+                label_span.style.fontWeight = 'bold';
+                row_div.appendChild(label_span);
+            
+                var value_paragraph = document.createElement('p');
+                value_paragraph.textContent = value;
+                row_div.appendChild(value_paragraph);
+            
+                container.appendChild(row_div);
+            }
+    
+            // Image
+            var img_div = document.createElement('div');
+            img_div.id = 'company_element_container';
             var imgElement = document.createElement('img');
-            company_parent.appendChild(img_div)
+            company_parent.appendChild(img_div);
             imgElement.src = img;
             imgElement.alt = 'Company Logo';
             imgElement.style.width = '150px';
             imgElement.style.height = '150px';
-            img_div.appendChild(imgElement)
+            img_div.appendChild(imgElement);
     
-            // name
-            var name_div = document.createElement('div')
-            name_div.id = 'company_element_container'
-            var name_paragraph = document.createElement('p');
-            name_paragraph.textContent = `Company Name: ${name}`;
-            name_paragraph.style.fontWeight = 'bold';
-            company_parent.appendChild(name_div);
-            name_div.appendChild(name_paragraph)
-
-            //ticker
-            var ticker_div = document.createElement('div')
-            ticker_div.id = 'company_element_container'
-            var ticker_paragraph = document.createElement('p');
-            ticker_paragraph.textContent = `Stock Ticker Symbol: ${ticker}`;
-            ticker_paragraph.style.fontWeight = 'bold';
-            company_parent.appendChild(ticker_div)
-            ticker_div.appendChild(ticker_paragraph)
-    
-            //exchange
-            var exchange_div = document.createElement('div')
-            exchange_div.id = 'company_element_container'
-            var exchange_paragraph = document.createElement('p');
-            exchange_paragraph.textContent = `Stock Exchange Code: ${exchange}`;
-            exchange_paragraph.style.fontWeight = 'bold';
-            company_parent.appendChild(exchange_div);
-            exchange_div.appendChild(exchange_paragraph)
-    
-            //start data
-            var start_div = document.createElement('div')
-            start_div.id = 'company_element_container'
-            var start_paragraph = document.createElement('p');
-            start_paragraph.textContent = `Company Start Date: ${start}`;
-            start_paragraph.style.fontWeight = 'bold';
-            company_parent.appendChild(start_div);
-            start_div.appendChild(start_paragraph)
-    
-            //category
-            var category_div = document.createElement('div')
-            category_div.id = 'company_element_container'
-            var category_paragraph = document.createElement('p');
-            category_paragraph.textContent = `Category: ${category}`;
-            category_paragraph.style.fontWeight = 'bold';
-            company_parent.appendChild(category_div);
-            category_div.appendChild(category_paragraph)
+            // Name
+            createCompanyRow(company_parent, 'Company Name ', name);
+            createCompanyRow(company_parent, 'Stock Ticker Symbol ', ticker);
+            createCompanyRow(company_parent, 'Stock Exchange Code ', exchange);
+            createCompanyRow(company_parent, 'Company Start Date ', start);
+            createCompanyRow(company_parent, 'Category ', category);
         }
     }
 
@@ -807,17 +786,39 @@ if (searchButton) {
         tabContainers.innerHTML = '';
     }
 
-    function deleteButtonClicked()
+    function clearNavBar()
     {
-        event.preventDefault();
+        var nav = document.querySelector('.nav');
+        if(nav.style.display == 'flex')
+        {
+            nav.style.display = 'none'
+        }
 
+    }
+
+    function deleteButtonClicked(event) {
+        event.preventDefault();
+    
         var searchInput = document.getElementById('search');
         if (searchInput) {
             searchInput.value = '';
         }
+    
         var nav = document.querySelector('.nav');
-        nav.style.display = 'none';
+        if (nav) {
+            nav.style.display = 'none';
+        }
+    
         var tabContainers = document.querySelector('.tab-containers');
-        tabContainers.innerHTML = '';
+        if (tabContainers) {
+            tabContainers.innerHTML = '';
+        }
+    
+        var errorDiv = document.querySelector('#error-message');
+        if (errorDiv) {
+            errorDiv.remove();
+        }
     }
+    
+    
 });
