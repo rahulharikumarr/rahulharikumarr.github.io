@@ -584,8 +584,11 @@ document.addEventListener('DOMContentLoaded', function () {
         div1.style.flexDirection = 'column'
         divstrong = document.createElement('p')
         divstrong.textContent = 'Strong'
+        divstrong.style.color = 'red'
         divsell = document.createElement('p')
         divsell.textContent = 'Sell'
+        divsell.style.paddingLeft = '10px';
+        divsell.style.color = 'red'
         div1.appendChild(divstrong)
         div1.appendChild(divsell)
         div1.style.marginRight = '10px'
@@ -600,8 +603,13 @@ document.addEventListener('DOMContentLoaded', function () {
         div7.style.flexDirection = 'column'
         divStrong = document.createElement('p')
         divStrong.textContent = 'Strong'
+        divStrong.style.color = 'green'
+
+
         divBuy = document.createElement('p')
-        divBuy.textContent = 'Sell'
+        divBuy.textContent = 'Buy'
+        divBuy.style.paddingLeft = '10px';
+        divBuy.style.color = 'green'
         div7.appendChild(divStrong)
         div7.appendChild(divBuy)
         div7.style.marginLeft = '10px'
