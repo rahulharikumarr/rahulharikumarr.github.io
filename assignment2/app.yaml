@@ -1,7 +1,0 @@
-runtime: python39  # or your Python version
-entrypoint: gunicorn -b :$PORT app:app
-
-
-env_variables:
-  FLASK_ENV: "production"
-  FLASK_APP: "app.py"
