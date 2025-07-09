@@ -291,6 +291,25 @@ body, html, #root, .app-root {
     max-width: 350px;
     height: auto;
   }
+  .projects-list {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+  .projects-list .project-card:first-child {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-list {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+  .projects-list .project-card:first-child {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .about-imgs-row {
@@ -689,6 +708,28 @@ body, html, #root, .app-root {
   max-width: 600px;
   border-radius: 12px;
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .about-spotify-row {
+    width: 100%;
+    max-width: 100%;
+    margin: 1rem 0 1rem 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-spotify-row iframe {
+    width: min(98vw, 400px);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
 
 .blog-list {
@@ -858,4 +899,121 @@ body, html, #root, .app-root {
   font-weight: 500;
   text-align: center;
   margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .about-row-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+  .about-img-standalone {
+    width: 180px;
+    height: 180px;
+    font-size: 1rem;
+  }
+  .about-img-label {
+    font-size: 1.1rem;
+  }
+  .about-content-col {
+    width: 100%;
+    min-width: 0;
+  }
+  .about-bottom-img-row {
+    margin-top: 2rem;
+  }
+  .about-img-bottom {
+    width: 90vw;
+    max-width: 90vw;
+  }
+  .about-spotify-row {
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 1rem 4vw;
+    max-width: 100vw;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.2rem 4vw;
+  }
+  .navbar__links {
+    gap: 1.2rem;
+    margin-top: 0.8rem;
+  }
+  .about-row-flex {
+    gap: 1.2rem;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+  .about-img-standalone {
+    width: 120px;
+    height: 120px;
+    font-size: 0.9rem;
+  }
+  .about-img-label {
+    font-size: 1rem;
+  }
+  .about-bottom-img-row {
+    margin-top: 1.2rem;
+  }
+  .about-img-bottom {
+    width: 98vw;
+    max-width: 98vw;
+  }
+  .about-spotify-row {
+    max-width: 100vw;
+    margin: 1rem 0 1rem 0;
+  }
+  .blog-list, .blog-post {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
+  .blog-card {
+    padding: 1.2rem 1rem;
+  }
+  .blog-card h2 {
+    font-size: 1.2rem;
+  }
+  .blog-card p {
+    font-size: 1rem;
+  }
+  .blog-post h1 {
+    font-size: 1.5rem;
+  }
+  .blog-post p {
+    font-size: 1rem;
+  }
+  .connect-container {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
+  .contact-form {
+    gap: 1rem;
+  }
+  .form-input, .form-textarea {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.95rem;
+  }
+  .submit-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
 }
