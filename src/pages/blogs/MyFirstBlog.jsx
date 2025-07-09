@@ -9,7 +9,7 @@ export default function MyFirstBlog() {
         Free Will is cool though.
       </p>
       <p>
-        Check in later for more if you're interested though.
+        Check in later for more if you're interested.
       </p>
     </div>
   );
