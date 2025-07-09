@@ -3,6 +3,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Random from './pages/Random';
 import Connect from './pages/Connect';
+import BlogPost from './pages/BlogPost';
 
 const navItems = [
   { name: 'About', path: '/about' },
@@ -14,7 +15,7 @@ const navItems = [
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar__brand">Rahul Hari</div>
+      <div className="navbar__brand">Your Name</div>
       <div className="navbar__links">
         {navItems.map((item) => (
           <NavLink
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/random" element={<Random />} />
+          <Route path="/random/:slug" element={<BlogPost />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="*" element={<About />} />
         </Routes>
