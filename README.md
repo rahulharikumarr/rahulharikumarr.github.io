@@ -1,8 +1,22 @@
-# React + Vite
+# Dev Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal, responsive developer portfolio built with React, Vite, and React Router, designed for GitHub Pages deployment.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
+
+## Build & Deploy
+
+1. Build the site:
+   ```bash
+   npm run build
+   ```
+2. Push the contents of the `dist` folder to your `main` branch (or set up GitHub Actions for automatic deployment).
+
+## Customization
+- Edit the contents in `src/pages/` and `src/components/` as needed.
+- Adjust styles in `src/App.css`. 

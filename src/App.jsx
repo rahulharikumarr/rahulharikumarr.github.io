@@ -1,32 +1,50 @@
-import { useState } from 'react'
-import styled from 'styled-components'
-import GlobalStyles from './styles/GlobalStyles'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Timeline from './components/Timeline'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { Routes, Route, NavLink } from 'react-router-dom';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Random from './pages/Random';
+import Connect from './pages/Connect';
 
-const AppContainer = styled.div`
-  width: 100%;
-  min-height: 100vh;
-`
+const navItems = [
+  { name: 'About', path: '/about' },
+  { name: 'Projects', path: '/projects' },
+  { name: 'Random', path: '/random' },
+  { name: 'Connect', path: '/connect' },
+];
 
-function App() {
+function Navbar() {
   return (
-    <AppContainer>
-      <GlobalStyles />
-      <Navbar />
-      <Hero />
-      <About />
-      <Timeline />
-      <Projects />
-      <Contact />
-      <Footer />
-    </AppContainer>
-  )
+    <nav className="navbar">
+      <div className="navbar__brand">Rahul Hari</div>
+      <div className="navbar__links">
+        {navItems.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.path}
+            className={({ isActive }) =>
+              isActive ? 'navbar__link active' : 'navbar__link'
+            }
+          >
+            {item.name}
+          </NavLink>
+        ))}
+      </div>
+    </nav>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <div className="app-root">
+      <Navbar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/random" element={<Random />} />
+          <Route path="/connect" element={<Connect />} />
+          <Route path="*" element={<About />} />
+        </Routes>
+      </main>
+    </div>
+  );
+}
