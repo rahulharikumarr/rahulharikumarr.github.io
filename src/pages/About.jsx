@@ -15,7 +15,7 @@ export default function About() {
         <div className="about-content-col">
           <div className="placeholder">
             <h1>About Me</h1>
-            <p>I'm a 24 y/o Machine Learning Engineer and Full Stack dev with a desire to build things that people love.<br /><br />I currently work at the Imaging Genetics Center (IGC) where I work on applying Deep Learning and Generative techniques towards Alzheimer's Disease research. <br></br><br></br>I'm a big fan of football (soccer), rock music, and building things (always happy to chat about exciting projects or ideas).</p>
+            <p>I'm a 24 y/o Machine Learning Engineer and Full Stack dev with a desire to build things that people love.<br /><br />I currently work at the Imaging Genetics Center (IGC) where I work on applying Deep Learning and Generative AI techniques towards Alzheimer's Disease research. <br></br><br></br>I'm a big fan of football (soccer), rock music, and building things (always happy to chat about exciting projects or ideas).</p>
           </div>
         </div>
       </div>
