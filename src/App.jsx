@@ -15,7 +15,7 @@ const navItems = [
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar__brand">Your Name</div>
+      <div className="navbar__brand">Rahul Hari</div>
       <div className="navbar__links">
         {navItems.map((item) => (
           <NavLink
