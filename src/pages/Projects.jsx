@@ -27,7 +27,7 @@ export default function Projects() {
         <div className="project-card">
           <h2>HoverMind – AI Powered Browser Extension</h2>
           <ul>
-            <li>Developed a neat littleChrome extension that enables users to select any text on a webpage and receive AI-generated explanations for technical terms and functions, improving understanding of complex content</li>
+            <li>Developed a neat little Chrome extension that enables users to select any text on a webpage and receive AI-generated explanations for technical terms and functions, improving understanding of complex content</li>
             <li>Built frontend using React and TypeScript, with UI inspired by modern tooltips and modal design for minimal distraction and clear comprehension</li>
             <li>Integrated a backend powered by FastAPI and LLM inference (GPT-3.5 Turbo) to generate concise, contextual explanations in real-time</li>
           </ul>
