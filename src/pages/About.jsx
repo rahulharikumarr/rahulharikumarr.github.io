@@ -1,4 +1,4 @@
-import profileImg from '../assets/images/profile.jpg';
+import profileImg from '../assets/images/profile.png';
 import gameProfileImg from '../assets/images/gameprofile.png';
 // Add import for map pin image
 import mapPinImg from '../assets/images/map-pin.png';
@@ -25,8 +25,38 @@ export default function About() {
         </span>
         <span className="about-location-text">Currently based in Los Angeles, CA</span>
       </div>
-      <div className="about-spotify-row">
-        <iframe style={{borderRadius: '12px'}} src="https://open.spotify.com/embed/track/0YJ9FWWHn9EfnN0lHwbzvV?utm_source=generator" width="100%" height="250" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      
+      <div className="about-skills-section">
+        <h3 className="skills-title">My skills</h3>
+        <div className="skills-badges">
+          <div className="skills-row">
+            <span className="skill-badge">PyTorch</span>
+            <span className="skill-badge">React</span>
+            <span className="skill-badge">Next.js</span>
+            <span className="skill-badge">FastAPI</span>
+            <span className="skill-badge">Machine Learning</span>
+            <span className="skill-badge">Deep Learning</span>
+            <span className="skill-badge">Generative AI</span>
+            <span className="skill-badge">Node.js</span>
+          </div>
+          <div className="skills-row">
+            <span className="skill-badge">LangChain</span>
+            <span className="skill-badge">Neural Networks</span>
+            <span className="skill-badge">NLP</span>
+            <span className="skill-badge">SQL</span>
+            <span className="skill-badge">MongoDB</span>
+            <span className="skill-badge">ExpressJS</span>
+            <span className="skill-badge">Sklearn</span>
+            <span className="skill-badge">Pandas</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="about-spotify-section">
+        <h3 className="spotify-title">Currently listening to 🎧</h3>
+        <div className="about-spotify-row">
+          <iframe style={{borderRadius: '12px'}} src="https://open.spotify.com/embed/track/0YJ9FWWHn9EfnN0lHwbzvV?utm_source=generator" width="100%" height="250" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
       </div>
       <div className="about-social-section">
         <div className="about-social-subheading">you can find me here.</div>

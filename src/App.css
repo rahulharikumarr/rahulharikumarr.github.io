@@ -105,6 +105,23 @@ html, body, #root, .app-root {
   margin-bottom: 0.7em;
 }
 
+.ongoing-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  margin-left: 0.8rem;
+  vertical-align: middle;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 .spotlight {
   display: flex;
   gap: 2rem;
@@ -235,6 +252,8 @@ html, body, #root, .app-root {
   opacity: 0.92;
   transition: opacity 0.25s;
   z-index: 10;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .spotlight-flex-img-wrap:hover .hover-demo-label {
@@ -681,10 +700,90 @@ html, body, #root, .app-root {
 }
 
 .about-location-text {
-  color: white;
+  color: #fff;
+  font-size: 1.1rem;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.01em;
+}
+
+.about-skills-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1.2rem 0 1.5rem 0;
+}
+
+.skills-title {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  margin-top: 0;
+}
+
+.skills-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 800px;
+}
+
+.skills-row {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.skill-badge {
+  background: #ff6b35;
+  border: 1px solid #ff5722;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Tinos', serif;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.skill-badge:hover {
+  background: #ff5722;
+  border-color: #e64a19;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+.about-spotify-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.about-spotify-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.spotify-title {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  margin-top: 0;
+}
+
+.about-spotify-row {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .about-social-section {
@@ -730,13 +829,6 @@ html, body, #root, .app-root {
   transform: scale(1.12);
 }
 
-.about-spotify-row {
-  width: 100%;
-  max-width: 600px;
-  margin: 2rem auto 1.5rem auto;
-  display: flex;
-  justify-content: center;
-}
 .about-spotify-row iframe {
   width: 100%;
   min-width: 280px;

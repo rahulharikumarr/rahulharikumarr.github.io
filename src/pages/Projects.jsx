@@ -1,12 +1,64 @@
 import React, { useState } from 'react';
 import spotlightImg from '../assets/images/phone.png';
 import hoverMindDemo from '../assets/images/HoverMind_demo.mov';
+import normalAIDemo from '../assets/images/demo.mov';
 
 export default function Projects() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [normalAIModalOpen, setNormalAIModalOpen] = useState(false);
 
   return (
     <div className="projects-list">
+      {/* Normal AI Project: card left, demo video right */}
+      <div className="spotlight-flex-row">
+        <div className="project-card">
+          <h2>
+            Normal AI –<br />AI-powered brand design for fast-moving founders
+            <span className="ongoing-badge">ongoing</span>
+          </h2>
+          <ul>
+            <li>Engineered backend APIs to generate consistent visual outputs using gpt-image-1, with metadata-driven prompt injection and dynamic style conditioning</li>
+            <li>Integrated Supabase Auth, Realtime DB, and Storage for secure user sessions, persistent image storage, and brand-specific assets</li>
+            <li>Deployed on Vercel with environment-based routing, protected routes, and dynamic SSR components using Next.js App Router</li>
+            <li>Designed scalable vibe-matching logic across 100+ predefined styles, each with associated prompt schemas and visual constraints</li>
+          </ul>
+        </div>
+        <div className="spotlight-flex-img-wrap" style={{ position: 'relative' }}>
+          <video 
+            src={normalAIDemo} 
+            alt="Normal AI Demo" 
+            className="spotlight-flex-img hover-expand-video" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            onClick={() => setNormalAIModalOpen(true)}
+            style={{ cursor: 'pointer' }}
+          />
+          <div className="hover-demo-label">Click to view demo</div>
+        </div>
+      </div>
+
+      {/* Modal for Normal AI demo video */}
+      {normalAIModalOpen && (
+        <div className="modal-overlay" onClick={() => setNormalAIModalOpen(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setNormalAIModalOpen(false)}>&times;</button>
+            <video 
+              src={normalAIDemo} 
+              alt="Normal AI Demo Large" 
+              className="modal-video" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              controls
+              style={{ width: '100%', height: 'auto', borderRadius: '1.2rem' }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Spotlight Project: image left, card right */}
       <div className="spotlight-flex-row">
         <div className="spotlight-flex-img-wrap">
