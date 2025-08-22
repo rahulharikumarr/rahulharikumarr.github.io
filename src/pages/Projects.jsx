@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import spotlightImg from '../assets/images/phone.png';
 import hoverMindDemo from '../assets/images/HoverMind_demo.mov';
-import normalAIDemo from '../assets/images/demo.mov';
+import normalAIDemo from '../assets/images/demo.mp4';
 
 export default function Projects() {
   const [modalOpen, setModalOpen] = useState(false);
