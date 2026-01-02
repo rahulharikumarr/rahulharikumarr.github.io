@@ -99,7 +99,7 @@ export const Hero: React.FC<HeroProps> = ({ onEnter }) => {
           </p>
 
           <p className="text-[11px] md:text-lg font-bold text-zinc-600 uppercase leading-tight max-w-[280px] md:max-w-md">
-            SPECIALIZING IN BUILDING GENERATIVE SYSTEMS THAT BRIDGE THE GAP BETWEEN MACHINE LEARNING LOGIC AND <span className="text-black bg-[#FF00FF]/20 px-1">AESTHETICS</span>.
+            SPECIALIZING IN BUILDING SYSTEMS THAT BRIDGE THE GAP BETWEEN MACHINE LEARNING LOGIC AND <span className="text-black bg-[#FF00FF]/20 px-1">AESTHETICS</span>.
           </p>
 
           <div className="flex gap-2.5 md:gap-4 items-center">
