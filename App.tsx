@@ -10,12 +10,14 @@ import { DraggableItem } from './components/DraggableItem';
 import { Hero } from './components/Hero';
 import { Changelog } from './components/Changelog';
 import { AssetLibrary } from './components/AssetLibrary';
+import { AudioController } from './components/AudioController';
 
 type ViewState = 'hero' | 'projects' | 'experience' | 'playground';
 
 const App: React.FC = () => {
   const [fatigue, setFatigue] = useState(0);
   const [isChaos, setIsChaos] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [view, setView] = useState<ViewState>('hero');
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
@@ -76,11 +78,12 @@ const App: React.FC = () => {
 
   return (
     <div
-      className={`relative w-full h-screen overflow-hidden selection:bg-[${COLORS.HIVIS_GREEN}] ${isChaos ? 'invert' : ''} ${isTouchDevice ? '' : 'cursor-none'}`}
+      className={`relative w-full h-[100dvh] overflow-hidden selection:bg-[${COLORS.HIVIS_GREEN}] ${isChaos ? 'invert' : ''} ${isTouchDevice ? '' : 'cursor-none'}`}
       style={{ backgroundColor: COLORS.PAPER }}
     >
       <div className="grain" />
       <BackgroundGrid fatigue={fatigue} isResting={fatigue === 0} />
+      <AudioController muted={isMuted} />
 
       <div className="relative z-10 w-full h-full flex flex-col pointer-events-none overflow-hidden">
 
@@ -127,7 +130,7 @@ const App: React.FC = () => {
           <div className="flex flex-row md:flex-row gap-2 md:gap-3 items-center md:items-end w-full md:w-auto">
             <Terminal />
             <div className="flex flex-col gap-1 shrink-0">
-              <label className="flex items-center gap-1.5 group cursor-pointer bg-white/80 p-1 md:bg-transparent md:p-0 border border-black/5 md:border-0">
+              <label className="flex items-center gap-1.5 group cursor-pointer bg-white/80 p-1 md:bg-transparent md:p-0 border border-black/5 md:border-0 touch-manipulation">
                 <div className="relative w-4 h-4 md:w-8 md:h-8 border-[2px] md:border-[3px] border-black bg-white flex items-center justify-center">
                   <input
                     type="checkbox"
@@ -139,6 +142,18 @@ const App: React.FC = () => {
                 </div>
                 <span className="text-[8px] md:text-[12px] font-black uppercase tracking-tight md:tracking-widest text-[#FF00FF]">Chaos</span>
               </label>
+
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                className="flex items-center gap-1.5 group cursor-pointer bg-white/80 p-1 md:bg-transparent md:p-0 border border-black/5 md:border-0"
+              >
+                <div className="relative w-4 h-4 md:w-8 md:h-8 border-[2px] md:border-[3px] border-black bg-white flex items-center justify-center hover:bg-[#39FF14] transition-colors">
+                  <div className={`w-2 h-2 md:w-4 md:h-4 ${isMuted ? 'bg-zinc-300' : 'bg-[#39FF14] animate-pulse'}`} />
+                </div>
+                <span className="text-[8px] md:text-[12px] font-black uppercase tracking-tight md:tracking-widest text-zinc-500 group-hover:text-black">
+                  {isMuted ? 'Muted' : 'Sound'}
+                </span>
+              </button>
             </div>
           </div>
 

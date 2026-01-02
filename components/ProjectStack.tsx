@@ -111,7 +111,7 @@ export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-105 transition-all duration-700"
                   />
                   <div className="absolute inset-0 border-[4px] md:border-[12px] border-white/5 pointer-events-none" />
                 </div>
