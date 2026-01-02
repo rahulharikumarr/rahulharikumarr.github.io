@@ -13,6 +13,8 @@ export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
   const lastScrollTime = useRef(0);
 
   useEffect(() => {
+    let touchStartY = 0;
+
     const handleWheel = (e: WheelEvent) => {
       const now = Date.now();
       if (now - lastScrollTime.current < 400) return;
@@ -26,8 +28,39 @@ export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
         lastScrollTime.current = now;
       }
     };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+      const now = Date.now();
+
+      if (now - lastScrollTime.current < 400) return;
+
+      if (Math.abs(deltaY) > 50) {
+        if (deltaY > 0) {
+          // Swipe Up -> Next
+          setActiveIndex(prev => (prev + 1) % PROJECTS.length);
+        } else {
+          // Swipe Down -> Prev
+          setActiveIndex(prev => (prev - 1 + PROJECTS.length) % PROJECTS.length);
+        }
+        lastScrollTime.current = now;
+      }
+    };
+
     window.addEventListener('wheel', handleWheel);
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
   }, []);
 
   return (
@@ -54,7 +87,7 @@ export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
                 transition: { duration: 0.3, ease: "anticipate" }
               }}
               // Changed from absolute to relative for the active card to push parent height
-              className="relative w-full max-w-4xl bg-white border-[3px] md:border-[6px] border-black shadow-[8px_8px_0px_0px_#000] md:shadow-[30px_30px_0px_0px_#000] p-3 md:p-6 flex flex-col md:flex-row gap-3 md:gap-8 cursor-pointer z-10"
+              className="relative w-full max-w-4xl bg-white border-[3px] md:border-[6px] border-black shadow-[8px_8px_0px_0px_#000] md:shadow-[30px_30px_0px_0px_#000] p-3 md:p-6 flex flex-col md:flex-row gap-3 md:gap-8 cursor-pointer z-10 touch-manipulation"
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               onClick={() => setActiveIndex((i + 1) % PROJECTS.length)}
