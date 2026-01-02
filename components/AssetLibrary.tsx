@@ -13,7 +13,7 @@ export const AssetLibrary: React.FC = () => {
     >
       <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 border-b-[8px] border-black pb-4">
         <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter text-black">
-          Asset <span className="text-[#00FFFF]">Library</span>
+          CREATIVE <span className="text-[#00FFFF]">PLAYGROUND</span>
         </h2>
         <div className="text-[10px] md:text-sm font-black uppercase text-zinc-400">
           Source: /Users/Rahul/Playground/

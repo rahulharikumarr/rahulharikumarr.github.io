@@ -15,11 +15,12 @@ export const PROJECTS = [
     id: 1,
     title: 'NORMAL AI',
     fileSize: '45MB',
-    date: '2024',
+    date: '2025',
     status: 'ONGOING' as const,
     description: 'AI-POWERED BRAND DESIGN FOR FAST-MOVING FOUNDERS. ENGINEERED BACKEND APIS TO GENERATE CONSISTENT VISUAL OUTPUTS USING GPT-IMAGE-1 WITH DYNAMIC STYLE CONDITIONING.',
-    tags: ['AI', 'SUPABASE', 'NEXT.JS', 'VERCEL'],
-    image: '/assets/normal-ai.png'
+    tags: ['LLMS', 'SUPABASE', 'NEXT.JS', 'VERCEL'],
+    image: '/assets/normal-ai.png',
+    link: 'https://trynormal.ai'
   },
   {
     id: 2,

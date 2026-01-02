@@ -90,6 +90,17 @@ export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
                           {tag}
                         </span>
                       ))}
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="bg-[#39FF14] text-black text-[6px] md:text-[11px] px-1.5 md:px-4 py-0.5 md:py-1 font-black uppercase tracking-tight md:tracking-widest border border-black hover:bg-black hover:text-[#39FF14] transition-colors flex items-center gap-1"
+                        >
+                          VISIT_SITE <span className="text-[8px] md:text-[12px]">↗</span>
+                        </a>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-2 gap-2 md:gap-4 text-[8px] md:text-[12px] font-black uppercase w-full md:w-2/3">
@@ -126,7 +137,7 @@ export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
                     exit={{ scale: 0.8, opacity: 0 }}
                     className="hidden md:block absolute top-12 right-12 bg-[#FF00FF] text-white px-4 py-2 text-[12px] font-black z-50 border-[4px] border-black shadow-[8px_8px_0px_0px_#000]"
                   >
-                    CLICK_TO_VIEW.EXE
+                    CLICK_TO_VIEW_NEXT.EXE
                   </motion.div>
                 )}
               </AnimatePresence>
