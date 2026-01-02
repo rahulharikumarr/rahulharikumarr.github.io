@@ -1,22 +1,20 @@
-# Dev Portfolio
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-A minimal, responsive developer portfolio built with React, Vite, and React Router, designed for GitHub Pages deployment.
+# Run and deploy your AI Studio app
 
-## Setup
+This contains everything you need to run your app locally.
 
-```bash
-npm install
-npm run dev
-```
+View your app in AI Studio: https://ai.studio/apps/drive/1E38u0Ch3li371y3ollq4oLFUBcIVplAw
 
-## Build & Deploy
+## Run Locally
 
-1. Build the site:
-   ```bash
-   npm run build
-   ```
-2. Push the contents of the `dist` folder to your `main` branch (or set up GitHub Actions for automatic deployment).
+**Prerequisites:**  Node.js
 
-## Customization
-- Edit the contents in `src/pages/` and `src/components/` as needed.
-- Adjust styles in `src/App.css`. 
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
