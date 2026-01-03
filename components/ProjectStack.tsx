@@ -5,9 +5,10 @@ import { PROJECTS, COLORS } from '../constants';
 
 interface ProjectStackProps {
   fatigue: number;
+  isTouchDevice: boolean;
 }
 
-export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
+export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue, isTouchDevice }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hovered, setHovered] = useState<number | null>(null);
   const lastScrollTime = useRef(0);
@@ -88,8 +89,8 @@ export const ProjectStack: React.FC<ProjectStackProps> = ({ fatigue }) => {
               }}
               // Changed from absolute to relative for the active card to push parent height
               className="relative w-full max-w-4xl bg-white border-[3px] md:border-[6px] border-black shadow-[8px_8px_0px_0px_#000] md:shadow-[30px_30px_0px_0px_#000] p-3 md:p-6 flex flex-col md:flex-row gap-3 md:gap-8 cursor-pointer z-10 touch-manipulation"
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
+              onMouseEnter={() => !isTouchDevice && setHovered(i)}
+              onMouseLeave={() => !isTouchDevice && setHovered(null)}
               onClick={() => setActiveIndex((i + 1) % PROJECTS.length)}
             >
               {/* Outer Frame Label */}
