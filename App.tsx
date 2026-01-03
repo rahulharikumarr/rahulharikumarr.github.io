@@ -117,8 +117,8 @@ const App: React.FC = () => {
         <main className="flex-1 relative pointer-events-auto overflow-y-auto overflow-x-hidden w-full">
           <div className="min-h-full w-full flex flex-col items-center justify-start md:justify-center px-4 pb-4 pt-20 md:p-12">
             <AnimatePresence mode="wait">
-              {view === 'hero' && <Hero key="hero" onEnter={() => setView('projects')} isTouchDevice={isTouchDevice} />}
-              {view === 'projects' && <ProjectStack key="projects" fatigue={fatigue} isTouchDevice={isTouchDevice} />}
+              {view === 'hero' && <Hero key="hero" onEnter={() => setView('projects')} disableHover={isTouchDevice || windowWidth < 768} />}
+              {view === 'projects' && <ProjectStack key="projects" fatigue={fatigue} disableHover={isTouchDevice || windowWidth < 768} />}
               {view === 'experience' && <Changelog key="experience" />}
               {view === 'playground' && <AssetLibrary key="playground" />}
             </AnimatePresence>

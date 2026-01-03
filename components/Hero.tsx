@@ -5,10 +5,10 @@ import { COLORS } from '../constants';
 
 interface HeroProps {
   onEnter: () => void;
-  isTouchDevice: boolean;
+  disableHover: boolean;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onEnter, isTouchDevice }) => {
+export const Hero: React.FC<HeroProps> = ({ onEnter, disableHover }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const originalImg = "/assets/profile-original.jpg";
@@ -25,8 +25,8 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, isTouchDevice }) => {
       <motion.div
         initial={{ rotate: -5, scale: 0.9 }}
         animate={{ rotate: 0, scale: 1 }}
-        onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
-        onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
+        onMouseEnter={() => !disableHover && setIsHovered(true)}
+        onMouseLeave={() => !disableHover && setIsHovered(false)}
         onClick={() => setIsHovered(!isHovered)}
         className="relative shrink-0 cursor-crosshair group mt-2 md:mt-0 touch-manipulation"
       >
