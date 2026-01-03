@@ -27,8 +27,8 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, disableHover }) => {
         animate={{ rotate: 0, scale: 1 }}
         onMouseEnter={disableHover ? undefined : () => setIsHovered(true)}
         onMouseLeave={disableHover ? undefined : () => setIsHovered(false)}
-        onClick={() => setIsHovered(!isHovered)}
-        className="relative shrink-0 cursor-crosshair group mt-2 md:mt-0 touch-manipulation"
+        onTap={() => setIsHovered(!isHovered)}
+        className={`relative shrink-0 cursor-crosshair mt-2 md:mt-0 touch-manipulation ${!disableHover ? 'group' : ''}`}
       >
         <div className="w-40 h-52 md:w-72 md:h-96 bg-zinc-200 border-[4px] md:border-[6px] border-black shadow-[6px_6px_0px_0px_#39FF14] md:shadow-[16px_16px_0px_0px_#39FF14] relative overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 bg-black">
