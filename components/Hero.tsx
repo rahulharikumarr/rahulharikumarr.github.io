@@ -25,8 +25,8 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, disableHover }) => {
       <motion.div
         initial={{ rotate: -5, scale: 0.9 }}
         animate={{ rotate: 0, scale: 1 }}
-        onMouseEnter={() => !disableHover && setIsHovered(true)}
-        onMouseLeave={() => !disableHover && setIsHovered(false)}
+        onMouseEnter={disableHover ? undefined : () => setIsHovered(true)}
+        onMouseLeave={disableHover ? undefined : () => setIsHovered(false)}
         onClick={() => setIsHovered(!isHovered)}
         className="relative shrink-0 cursor-crosshair group mt-2 md:mt-0 touch-manipulation"
       >

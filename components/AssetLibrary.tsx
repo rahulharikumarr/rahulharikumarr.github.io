@@ -36,7 +36,7 @@ export const AssetLibrary: React.FC<AssetLibraryProps> = ({ disableHover }) => {
             className="break-inside-avoid"
           >
             <div
-              className="bg-white border-[3px] md:border-[6px] border-black p-2 md:p-3 shadow-[4px_4px_0px_0px_#000] group cursor-crosshair touch-manipulation"
+              className={`bg-white border-[3px] md:border-[6px] border-black p-2 md:p-3 shadow-[4px_4px_0px_0px_#000] cursor-crosshair touch-manipulation ${!disableHover ? 'group' : ''}`}
               onClick={() => disableHover && setActiveId(activeId === i ? null : i)}
             >
               <div className="relative overflow-hidden aspect-auto border-2 border-black">
