@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, isTouchDevice }) => {
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ x: -1000, skewX: 10, opacity: 0, transition: { duration: 0.6, ease: "circIn" } }}
-      className="w-full max-w-6xl flex flex-row items-center justify-center gap-4 md:gap-12 px-2 md:px-8"
+      className="w-full max-w-6xl flex flex-row items-start md:items-center justify-center gap-3 md:gap-12 px-2 md:px-8"
     >
       {/* Profile Image - Mobile Scaling Fix */}
       <motion.div
@@ -28,9 +28,9 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, isTouchDevice }) => {
         onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
         onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
         onClick={() => setIsHovered(!isHovered)}
-        className="relative shrink-0 cursor-crosshair group mt-0 touch-manipulation"
+        className="relative shrink-0 cursor-crosshair group touch-manipulation"
       >
-        <div className="w-28 h-36 md:w-72 md:h-96 bg-zinc-200 border-[3px] md:border-[6px] border-black shadow-[4px_4px_0px_0px_#39FF14] md:shadow-[16px_16px_0px_0px_#39FF14] relative overflow-hidden flex items-center justify-center">
+        <div className="w-28 h-40 md:w-72 md:h-96 bg-zinc-200 border-[3px] md:border-[6px] border-black shadow-[4px_4px_0px_0px_#39FF14] md:shadow-[16px_16px_0px_0px_#39FF14] relative overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 bg-black">
             <motion.img
               src={originalImg}
@@ -77,12 +77,12 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, isTouchDevice }) => {
       </motion.div>
 
       {/* Hero Text - Mobile Optimized Sizes to prevent clipping */}
-      <div className="flex flex-col items-start text-left max-w-2xl w-full">
+      <div className="flex flex-col items-start text-left max-w-2xl w-full pt-2 md:pt-0">
         <div className="relative mb-2 md:mb-6">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.05 }}
-            className="absolute -top-4 md:-top-16 left-0 md:-left-8 text-[40px] md:text-[140px] font-black text-black select-none pointer-events-none tracking-tighter"
+            className="absolute -top-4 md:-top-16 -left-4 md:-left-8 text-[40px] md:text-[140px] font-black text-black select-none pointer-events-none tracking-tighter"
           >
             HARI
           </motion.div>
@@ -93,13 +93,13 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, isTouchDevice }) => {
           </h1>
         </div>
 
-        <div className="border-l-[2px] md:border-l-8 border-black pl-2 md:pl-6 py-1 md:py-2 flex flex-col gap-1.5 md:gap-6 items-start">
+        <div className="border-l-[2px] md:border-l-8 border-black pl-2 md:pl-6 py-1 md:py-2 flex flex-col gap-2 md:gap-6 items-start">
           <p className="text-xs md:text-3xl font-black uppercase leading-[1.1] tracking-tighter text-black">
             AI DESIGNER <br className="hidden md:block" />
             & CREATIVE ENGINEER..
           </p>
 
-          <p className="text-[8px] md:text-lg font-bold text-zinc-600 uppercase leading-tight max-w-[150px] md:max-w-md">
+          <p className="text-[9px] md:text-lg font-bold text-zinc-600 uppercase leading-tight max-w-[280px] md:max-w-md">
             SPECIALIZING IN BUILDING SYSTEMS THAT BRIDGE THE GAP BETWEEN MACHINE LEARNING LOGIC AND <span className="text-black bg-[#FF00FF]/20 px-1">AESTHETICS</span>.
           </p>
 
@@ -118,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({ onEnter, isTouchDevice }) => {
               onEnter();
             }}
             whileHover={{ x: 5, backgroundColor: COLORS.HIVIS_GREEN, color: COLORS.BLACK }}
-            className="relative z-[60] cursor-pointer mt-1 md:mt-4 bg-black text-white px-3 md:px-10 py-1.5 md:py-5 text-[10px] md:text-2xl font-black uppercase border-[2px] md:border-4 border-black transition-all shadow-[3px_3px_0px_0px_#000] md:shadow-[10px_10px_0px_0px_#000] flex items-center justify-center gap-1 md:gap-4 group w-auto"
+            className="relative z-[60] cursor-pointer mt-1 md:mt-4 bg-black text-white px-3 md:px-10 py-1.5 md:py-5 text-[10px] md:text-2xl font-black uppercase border-[2px] md:border-4 border-black transition-all shadow-[3px_3px_0px_0px_#000] md:shadow-[10px_10px_0px_0px_#000] flex items-center justify-center gap-2 md:gap-4 group w-auto"
           >
             Explore Projects
             <motion.svg
