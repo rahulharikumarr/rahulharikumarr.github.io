@@ -120,7 +120,7 @@ const App: React.FC = () => {
               {view === 'hero' && <Hero key="hero" onEnter={() => setView('projects')} disableHover={isTouchDevice || windowWidth < 768} />}
               {view === 'projects' && <ProjectStack key="projects" fatigue={fatigue} disableHover={isTouchDevice || windowWidth < 768} />}
               {view === 'experience' && <Changelog key="experience" />}
-              {view === 'playground' && <AssetLibrary key="playground" />}
+              {view === 'playground' && <AssetLibrary key="playground" disableHover={isTouchDevice || windowWidth < 768} />}
             </AnimatePresence>
           </div>
         </main>

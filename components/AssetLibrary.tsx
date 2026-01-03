@@ -3,7 +3,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ASSETS, COLORS } from '../constants';
 
-export const AssetLibrary: React.FC = () => {
+interface AssetLibraryProps {
+  disableHover: boolean;
+}
+
+export const AssetLibrary: React.FC<AssetLibraryProps> = ({ disableHover }) => {
+  const [activeId, setActiveId] = React.useState<number | null>(null);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -29,16 +35,19 @@ export const AssetLibrary: React.FC = () => {
             transition={{ delay: i * 0.1 }}
             className="break-inside-avoid"
           >
-            <div className="bg-white border-[3px] md:border-[6px] border-black p-2 md:p-3 shadow-[4px_4px_0px_0px_#000] group cursor-crosshair">
+            <div
+              className="bg-white border-[3px] md:border-[6px] border-black p-2 md:p-3 shadow-[4px_4px_0px_0px_#000] group cursor-crosshair touch-manipulation"
+              onClick={() => disableHover && setActiveId(activeId === i ? null : i)}
+            >
               <div className="relative overflow-hidden aspect-auto border-2 border-black">
                 <img
                   src={asset.url}
                   alt={asset.name}
-                  className="w-full h-auto grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  className={`w-full h-auto transition-all duration-500 ${activeId === i ? 'grayscale-0 scale-105' : 'grayscale'} ${!disableHover ? 'group-hover:grayscale-0 group-hover:scale-105' : ''}`}
                 />
 
-                {/* CMYK Overlay Effect on Hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300">
+                {/* CMYK Overlay Effect on Hover/Active */}
+                <div className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${activeId === i ? 'opacity-100' : 'opacity-0'} ${!disableHover ? 'group-hover:opacity-100' : ''}`}>
                   <div className="absolute inset-0 mix-blend-screen bg-[#FF00FF]/10" />
                   <div className="absolute inset-0 mix-blend-screen bg-[#00FFFF]/10 translate-x-1" />
                 </div>
@@ -48,7 +57,7 @@ export const AssetLibrary: React.FC = () => {
                 <span className="text-[7px] md:text-[10px] font-black uppercase truncate text-black pr-2">
                   {asset.name}
                 </span>
-                <div className="w-2 h-2 md:w-3 md:h-3 border border-black group-hover:bg-[#39FF14] transition-colors" />
+                <div className={`w-2 h-2 md:w-3 md:h-3 border border-black transition-colors ${activeId === i ? 'bg-[#39FF14]' : ''} ${!disableHover ? 'group-hover:bg-[#39FF14]' : ''}`} />
               </div>
             </div>
           </motion.div>
