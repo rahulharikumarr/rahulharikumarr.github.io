@@ -46,22 +46,12 @@ export const PROJECTS = [
 ];
 
 export const EXPERIENCE = [
-  {
-    version: 'v2026.1',
-    status: 'CURRENT BUILD',
-    role: 'AI DESIGNER',
-    company: 'WARP',
-    bullets: [
-      'DEFINING NEXT-GEN GENERATIVE UNDERSTANDING IN LOGISTICS.',
-      'BRIDGING THE GAP BETWEEN TERMINAL WORKFLOWS AND AI.',
-      'SHIPPING HIGH-VELOCITY MIDDLE-MILE SYSTEMS.'
-    ]
-  },
+
   {
     version: 'v2026.0',
-    status: 'STABLE RELEASE',
+    status: 'CURRENT BUILD',
     role: 'MACHINE LEARNING ENGINEER',
-    company: 'IMAGING GENETICS CENTER [APR 2024]',
+    company: 'IMAGING GENETICS CENTER [APR 2024 - CURRENT]',
     bullets: [
       'ENGINEERED 3D VAE FOR MULTI-SITE MRI DATA HARMONIZATION.',
       "OPTIMIZED DENSENET ARCHITECTURES FOR ALZHEIMER'S PROGNOSIS.",
@@ -71,7 +61,7 @@ export const EXPERIENCE = [
   {
     version: 'v2025.2',
     status: 'BETA BRANCH',
-    role: 'FOUNDER & LEAD ENGINEER',
+    role: 'SIDE PROJECT (LIVE)',
     company: 'NORMAL AI',
     bullets: [
       'BUILT MCP-BASED CONTEXT SERVERS FOR BRAND MEMORY.',
