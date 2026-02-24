@@ -72,7 +72,7 @@ export const EXPERIENCE = [
   {
     version: 'v2025.2',
     status: 'BETA BRANCH',
-    role: 'SIDE PROJECT (LIVE)',
+    role: 'CO-FOUNDER',
     company: 'NORMAL AI',
     bullets: [
       'BUILT MCP-BASED CONTEXT SERVERS FOR BRAND MEMORY.',
