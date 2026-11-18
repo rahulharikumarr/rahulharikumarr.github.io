@@ -1,20 +1,24 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# rahulharikumarr.github.io
 
-# Run and deploy your AI Studio app
+My portfolio, written as a README that renders itself as you scroll.
 
-This contains everything you need to run your app locally.
+Every piece of the page starts as its markdown source, typed in mono, and then
+renders: a heading, a checklist, a table, a code block, an image, a link.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1E38u0Ch3li371y3ollq4oLFUBcIVplAw
+- `index.html` holds every section and all of the words. Each `.rx` element has
+  the markdown source (`.rx__raw`) and what it renders to (`.rx__out`). Edit copy here.
+- `src/main.ts` is the scroll engine. A scene's `data-len` is how many
+  screen-heights of scroll it lasts. `data-in="0.2 0.5"` on an element means it
+  types and renders between 20% and 50% of its scene.
+- `src/style.css` is the look. With reduced motion on, or without JavaScript,
+  the same page reads as a plain column of screens.
+- `public/assets/` is served as-is at `/assets/`.
 
-## Run Locally
+## Run it
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Pushing to `main` builds and deploys to GitHub Pages.
