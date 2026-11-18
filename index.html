@@ -5,236 +5,235 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Rahul Hari</title>
-  <meta name="description" content="Rahul Hari is Lead AI Engineer at Warp in Los Angeles. This is his README: agents, models and apps he has shipped.">
+  <meta name="description" content="Rahul Hari is Lead AI Engineer at Warp in Los Angeles. Take the red pill and see how deep the work goes.">
   <meta property="og:title" content="Rahul Hari">
-  <meta property="og:description" content="Lead AI Engineer at Warp. A README that renders as you scroll.">
+  <meta property="og:description" content="Lead AI Engineer at Warp. Take the red pill.">
   <meta property="og:image" content="https://rahulharikumarr.github.io/assets/signature.jpg">
-  <meta name="theme-color" content="#C4D7EF">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101010'/%3E%3Ctext x='16' y='24' font-family='monospace' font-weight='700' font-size='24' text-anchor='middle' fill='%23C9FF3B'%3E%23%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#020503">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23020503'/%3E%3Crect x='5' y='11' width='22' height='10' rx='5' fill='%23e5131d' transform='rotate(-28 16 16)'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-Cr39GhRH.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-D6NO304A.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-BNpkRVsp.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-XRd2y4jO.css">
 </head>
 
 <body>
+  <canvas class="rain" aria-hidden="true"></canvas>
+
   <header class="hud">
-    <a class="hud__name" href="#top">README.md</a>
+    <a class="hud__name" href="#top">Rahul Hari</a>
   </header>
 
-  <!-- The site is one README. Each scene is a section of it, and every piece
-       starts as its markdown source (.rx__raw, typed in mono) and then renders
-       (.rx__out). Without JavaScript, or with reduced motion on, only the
-       rendered side shows and the page reads as a plain column of screens.
-       With motion, src/main.ts pins the stage and scroll plays it. -->
+  <!-- One column of scenes. With motion, src/main.ts pins the stage, the code
+       rains behind it and scroll plays the scenes. Without JavaScript, or with
+       reduced motion on, it reads as a plain page, one screen per scene. -->
   <main class="stage" id="top">
 
-    <!-- # Rahul Hari -->
-    <section class="scene s-cover" data-name="README" data-len="130" data-hud="dark" data-rest="0">
-      <div class="cover">
-        <h1 class="rx rx--h" data-auto="0.3 2">
-          <span class="rx__raw" aria-hidden="true"># rahul hari</span>
-          <span class="rx__out title kin">Rahul<br>Hari</span>
-        </h1>
-        <p class="rx rx--quote" data-auto="2.1 1.6">
-          <span class="rx__raw" aria-hidden="true">&gt; lead ai engineer at warp. los angeles.</span>
-          <span class="rx__out">Lead AI Engineer at Warp.<br>Los Angeles.</span>
-        </p>
-      </div>
-      <div class="rx rx--img portrait" data-auto="1.2 1.9">
-        <span class="rx__raw" aria-hidden="true">![rahul](rahul.jpg)</span>
-        <img class="rx__out" src="/assets/signature.jpg" alt="Rahul Hari" width="400" height="400">
-      </div>
-      <p class="comment" data-auto="3.4 0.9">&lt;!-- scroll. the rest renders as you go. --&gt;</p>
+    <!-- 0 · the screen wakes, then the rain spells the name -->
+    <section class="scene s-wake" data-name="wake up" data-len="270" data-resolve="0.24 0.74" data-rest="0">
+      <h1 class="name">Rahul Hari</h1>
+      <ol class="term" data-out="0.03 0.14">
+        <li data-type data-auto="0.7 1">Wake up.</li>
+        <li data-type data-auto="2.4 1.7">The portfolio has you.</li>
+        <li data-type data-auto="4.6 1.9">Follow the white rabbit.</li>
+      </ol>
+      <p class="ident">
+        <b data-decode data-in="0.7 0.84">lead ai engineer</b>
+        <span data-decode data-in="0.76 0.9">warp // los angeles</span>
+      </p>
     </section>
 
-    <!-- ## I ship -->
-    <section class="scene s-ship" data-name="I ship" data-len="320" data-trans="55" data-enter="up" data-hud="light" data-rest="0.1">
-      <div class="ship">
-        <h2 class="rx rx--h rx--small" data-in="0 0.1">
-          <span class="rx__raw" aria-hidden="true">## i ship</span>
-          <span class="rx__out ship__i">I ship</span>
-        </h2>
-        <p class="reel kin" aria-label="agents, models, apps, freight.">
-          <span class="reel__track" data-reel="4" data-in="0.1 0.92">
-            <b class="w w1">agents.</b>
-            <b class="w w2">models.</b>
-            <b class="w w3">apps.</b>
-            <b class="w w4">freight.</b>
-          </span>
-        </p>
-        <p class="comment comment--in" data-in="0.88 0.97">&lt;!-- the last one is literal. --&gt;</p>
+    <!-- 1 · two lenses, two pills -->
+    <section class="scene s-choice" data-name="the choice" data-len="260" data-trans="60" data-rain="0.26">
+      <p class="say" data-decode data-in="0 0.16">This is where you choose.</p>
+      <div class="shades">
+        <button class="lens" type="button" data-pill="blue" data-in="0.1 0.3" aria-label="Take the blue pill: back to the start"><i class="pill pill--blue"></i></button>
+        <i class="bridge" data-in="0.1 0.3"></i>
+        <button class="lens" type="button" data-pill="red" data-in="0.16 0.36" aria-label="Take the red pill: keep going"><i class="pill pill--red"></i></button>
+      </div>
+      <div class="pills">
+        <p data-in="0.36 0.52"><b class="blue">Blue pill.</b> The tab closes. You wake up and believe whatever the résumé says.</p>
+        <p data-in="0.52 0.68"><b class="red">Red pill.</b> You keep scrolling, and I show you how deep the work goes.</p>
       </div>
     </section>
 
-    <!-- ### Warp: a checklist -->
-    <section class="scene s-warp" data-name="Warp" data-len="250" data-trans="50" data-enter="up" data-hud="dark">
-      <div class="copy">
-        <h2 class="rx rx--h" data-in="0 0.2">
-          <span class="rx__raw" aria-hidden="true">### warp</span>
-          <span class="rx__out h h--big kin">Warp</span>
-        </h2>
-        <p class="rx rx--role" data-in="0.1 0.3">
-          <span class="rx__raw" aria-hidden="true">*lead ai engineer, 2026 to now*</span>
-          <span class="rx__out role">Lead AI Engineer, 2026 to now</span>
-        </p>
+    <!-- 2 · the construct: a white room, a self image, and racks of tools -->
+    <section class="scene s-construct" data-name="the construct" data-len="300" data-trans="45" data-rain="0" data-room="white">
+      <figure class="self" data-in="0.04 0.22">
+        <img src="/assets/signature.jpg" alt="Rahul Hari" width="400" height="400">
+        <figcaption><b>Residual self-image.</b> How I picture myself when I'm plugged in.</figcaption>
+      </figure>
+      <p class="need" data-in="0.3 0.42">Tools. Lots of tools.</p>
+      <div class="racks" data-in="0.36 0.9" aria-label="Tools">
+        <ul class="rack" style="--x:-37;--y:-7;--d:0">
+          <li>LLM agents</li>
+          <li>MCP</li>
+          <li>Structured outputs</li>
+          <li>Simulation</li>
+        </ul>
+        <ul class="rack" style="--x:37;--y:-7;--d:0.12">
+          <li>3D VAE</li>
+          <li>DenseNet</li>
+          <li>MRI</li>
+          <li>Neuroimaging</li>
+        </ul>
+        <ul class="rack" style="--x:-37;--y:15;--d:0.24">
+          <li>TypeScript</li>
+          <li>Next.js</li>
+          <li>React Native</li>
+          <li>Vercel</li>
+        </ul>
+        <ul class="rack" style="--x:37;--y:15;--d:0.36">
+          <li>Python</li>
+          <li>FastAPI</li>
+          <li>Supabase</li>
+          <li>Postgres</li>
+        </ul>
       </div>
-      <ul class="art checks">
-        <li class="rx rx--check" data-in="0.24 0.46">
-          <span class="rx__raw" aria-hidden="true">- [x] proposals in minutes</span>
-          <span class="rx__out"><i class="tick"></i>An agent that takes a shipper's messy data and returns a priced proposal. Days became minutes.</span>
-        </li>
-        <li class="rx rx--check" data-in="0.44 0.66">
-          <span class="rx__raw" aria-hidden="true">- [x] proposals you can play with</span>
-          <span class="rx__out"><i class="tick"></i>Proposals customers can play with: change truck fill or injection points and the numbers move in front of them.</span>
-        </li>
-        <li class="rx rx--check" data-in="0.64 0.86">
-          <span class="rx__raw" aria-hidden="true">- [x] simulation layer</span>
-          <span class="rx__out"><i class="tick"></i>A simulation layer that runs the options against each other and keeps the one that saves the most.</span>
-        </li>
-      </ul>
     </section>
 
-    <!-- ### Imaging Genetics Center: a table -->
-    <section class="scene s-igc" data-name="Imaging Genetics Center" data-len="250" data-trans="50" data-enter="up" data-hud="light">
-      <div class="copy">
-        <h2 class="rx rx--h" data-in="0 0.2">
-          <span class="rx__raw" aria-hidden="true">### imaging genetics center</span>
-          <span class="rx__out h h--long kin">Imaging Genetics Center</span>
-        </h2>
-        <p class="rx rx--role" data-in="0.1 0.3">
-          <span class="rx__raw" aria-hidden="true">*machine learning engineer, 2024 to now*</span>
-          <span class="rx__out role">Machine learning engineer, 2024 to now</span>
-        </p>
+    <!-- 3 · Warp: agents -->
+    <section class="scene s-agents" data-name="agents" data-len="290" data-trans="45">
+      <div class="col">
+        <h2 class="hd" data-decode data-in="0 0.16">I build agents.</h2>
+        <p class="meta" data-decode data-in="0.08 0.22">Warp // Lead AI Engineer // 2026 to now</p>
+        <ul class="lns">
+          <li data-decode data-in="0.22 0.42">The helpful kind. One reads a shipper's messy data and returns a priced proposal. Days became minutes.</li>
+          <li data-decode data-in="0.42 0.62">The proposals are live: customers change truck fill or injection points and watch the numbers move.</li>
+          <li data-decode data-in="0.62 0.82">Underneath, a simulation runs every option against the others and keeps the one that saves the most.</li>
+        </ul>
       </div>
-      <div class="art">
-        <div class="rx rx--table" data-in="0.26 0.56">
-          <span class="rx__raw" aria-hidden="true">| model | what it does |<br>| --- | --- |</span>
-          <table class="rx__out">
-            <thead>
-              <tr><th>Model</th><th>What it does</th></tr>
-            </thead>
-            <tbody>
-              <tr data-in="0.5 0.62"><td>3D VAE</td><td>Brings MRI scans from different hospitals into line with each other.</td></tr>
-              <tr data-in="0.62 0.74"><td>DenseNet</td><td>Predicts how Alzheimer's will progress.</td></tr>
-              <tr data-in="0.74 0.86"><td>Hybrid</td><td>1.303 MAE on neuroimaging data.</td></tr>
-            </tbody>
-          </table>
+      <div class="vis">
+        <div class="agent" data-in="0.08 0.4" aria-hidden="true">
+          <i class="agent__lens"><span>ｦｱｳｴｵｶｷｹｺｻ 0110 ｼｽｾｿﾀﾂﾃﾅ<br>ﾆﾇﾈﾊﾋﾎﾏﾐ 1001 ﾑﾒﾓﾔﾕﾗﾘﾜ<br>ｱｳｴｵｶｷ 0011 ｹｺｻｼｽｾｿﾀﾂ<br>ﾃﾅﾆﾇﾈﾊﾋﾎﾏ 1100 ﾐﾑﾒﾓﾔ<br>ｦｱｳｴｵｶｷｹｺｻ 0110 ｼｽｾｿﾀﾂﾃﾅ<br>ﾆﾇﾈﾊﾋﾎﾏﾐ 1001 ﾑﾒﾓﾔﾕﾗﾘﾜ<br>ｱｳｴｵｶｷ 0011 ｹｺｻｼｽｾｿﾀﾂ<br>ﾃﾅﾆﾇﾈﾊﾋﾎﾏ 1100 ﾐﾑﾒﾓﾔ</span></i>
+          <i class="agent__bridge"></i>
+          <i class="agent__lens"><span>ﾆﾇﾈﾊﾋﾎﾏﾐ 1001 ﾑﾒﾓﾔﾕﾗﾘﾜ<br>ｱｳｴｵｶｷ 0011 ｹｺｻｼｽｾｿﾀﾂ<br>ﾃﾅﾆﾇﾈﾊﾋﾎﾏ 1100 ﾐﾑﾒﾓﾔ<br>ｦｱｳｴｵｶｷｹｺｻ 0110 ｼｽｾｿﾀﾂﾃﾅ<br>ﾆﾇﾈﾊﾋﾎﾏﾐ 1001 ﾑﾒﾓﾔﾕﾗﾘﾜ<br>ｱｳｴｵｶｷ 0011 ｹｺｻｼｽｾｿﾀﾂ<br>ﾃﾅﾆﾇﾈﾊﾋﾎﾏ 1100 ﾐﾑﾒﾓﾔ<br>ｦｱｳｴｵｶｷｹｺｻ 0110 ｼｽｾｿﾀﾂﾃﾅ</span></i>
+          <svg class="agent__wire" viewBox="0 0 60 120"><path d="M6 4c18 2 30 12 30 26s-16 8-16 18 18 4 18 14-18 6-18 16 18 4 18 14-12 10-12 22" /></svg>
         </div>
       </div>
     </section>
 
-    <!-- ### Normal AI: a code block -->
-    <section class="scene s-normal" data-name="Normal AI" data-len="250" data-trans="50" data-enter="up" data-hud="dark">
-      <div class="copy">
-        <h2 class="rx rx--h" data-in="0 0.2">
-          <span class="rx__raw" aria-hidden="true">### normal ai</span>
-          <span class="rx__out h kin">Normal AI</span>
-        </h2>
-        <p class="rx rx--role" data-in="0.1 0.3">
-          <span class="rx__raw" aria-hidden="true">*co-founder, 2025*</span>
-          <span class="rx__out role">Co-founder, 2025</span>
-        </p>
-        <ul class="lines">
-          <li data-in="0.28 0.42">Brand memory for image models. It reads a company's live website, builds a context pack, and holds every generated asset to the brand.</li>
-          <li class="rx rx--link" data-in="0.74 0.92">
-            <span class="rx__raw" aria-hidden="true">[trynormal.ai](https://trynormal.ai)</span>
-            <a class="rx__out" href="https://trynormal.ai" target="_blank" rel="noopener">trynormal.ai</a>
-          </li>
+    <!-- 4 · Imaging Genetics Center: there is no scanner -->
+    <section class="scene s-spoon" data-name="there is no scanner" data-len="290" data-trans="45">
+      <div class="col">
+        <h2 class="hd" data-decode data-in="0 0.16">There is no scanner.</h2>
+        <p class="meta" data-decode data-in="0.08 0.22">Imaging Genetics Center // ML engineer // 2024 to now</p>
+        <ul class="lns">
+          <li data-decode data-in="0.22 0.42">Do not try to match the scanners. That's impossible. MRI from different hospitals never agrees.</li>
+          <li data-decode data-in="0.42 0.62">Instead, a 3D VAE learns the brain without the machine that photographed it, and the scans line up.</li>
+          <li data-decode data-in="0.62 0.82">Then DenseNet models read them and predict how Alzheimer's will progress. 1.303 MAE on the hybrid model.</li>
         </ul>
       </div>
-      <div class="art">
-        <div class="rx rx--code" data-in="0.3 0.52">
-          <span class="rx__raw" aria-hidden="true">```json</span>
-          <pre class="rx__out code" aria-label="An example brand context pack"><code><span data-in="0.48 0.54">{</span>
-<span data-in="0.52 0.58">  <b>"brand"</b>: <em>"acme"</em>,</span>
-<span data-in="0.56 0.62">  <b>"source"</b>: <em>"acme.com, read live"</em>,</span>
-<span data-in="0.6 0.66">  <b>"palette"</b>: [<em>"#C9FF3B"</em>, <em>"#101010"</em>],</span>
-<span data-in="0.64 0.7">  <b>"voice"</b>: <em>"plain, a little dry"</em>,</span>
-<span data-in="0.68 0.74">  <b>"served_over"</b>: <em>"mcp"</em></span>
-<span data-in="0.72 0.78">}</span></code></pre>
+      <div class="vis">
+        <div class="spoon" data-in="0.2 0.86" aria-hidden="true">
+          <i class="spoon__bowl"></i>
+          <i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg"><i class="seg seg--end"></i></i></i></i></i></i></i></i></i></i></i></i>
         </div>
       </div>
     </section>
 
-    <!-- ### Spotlight: an image -->
-    <section class="scene s-spot" data-name="Spotlight" data-len="210" data-trans="50" data-enter="up" data-hud="light">
-      <div class="copy">
-        <h2 class="rx rx--h" data-in="0 0.2">
-          <span class="rx__raw" aria-hidden="true">### spotlight</span>
-          <span class="rx__out h kin">Spotlight</span>
-        </h2>
-        <p class="rx rx--role" data-in="0.1 0.3">
-          <span class="rx__raw" aria-hidden="true">*ios app, 2024*</span>
-          <span class="rx__out role">iOS app, 2024</span>
-        </p>
-        <ul class="lines">
-          <li data-in="0.34 0.5">A social network for creators, built in React Native on Supabase.</li>
-          <li data-in="0.52 0.68">A Postgres schema indexed to stay quick as the feed grows.</li>
+    <!-- 5 · Normal AI: déjà vu -->
+    <section class="scene s-deja" data-name="déjà vu" data-len="280" data-trans="45">
+      <div class="col">
+        <h2 class="hd" data-decode data-in="0 0.16">Déjà vu.</h2>
+        <p class="meta" data-decode data-in="0.08 0.22">Normal AI // Co-founder // 2025</p>
+        <ul class="lns">
+          <li data-decode data-in="0.22 0.4">A déjà vu is a glitch. It happens when something gets changed.</li>
+          <li data-decode data-in="0.4 0.64">Normal AI causes them on purpose. It reads a brand's live website into memory and serves it over MCP, so every image a team generates comes back looking like the last one.</li>
+          <li data-in="0.66 0.8"><a href="https://trynormal.ai" target="_blank" rel="noopener">trynormal.ai</a></li>
         </ul>
       </div>
-      <div class="art">
-        <div class="rx rx--img" data-in="0.16 0.6">
-          <span class="rx__raw" aria-hidden="true">![spotlight](spotlight.png)</span>
-          <div class="rx__out phone">
-            <img src="/assets/spotlight-screen.png" alt="Spotlight home feed" width="316" height="682" loading="lazy">
-          </div>
+      <div class="vis">
+        <div class="alley" aria-hidden="true">
+          <svg class="cat" viewBox="0 0 200 120" data-in="0.18 0.5"><use href="#cat" /></svg>
+          <svg class="cat cat--again" viewBox="0 0 200 120" data-in="0.52 0.84"><use href="#cat" /></svg>
         </div>
       </div>
     </section>
 
-    <!-- ### Hovermind: the product, doing its thing on this page -->
-    <section class="scene s-hover" data-name="Hovermind" data-len="230" data-trans="50" data-enter="up" data-hud="dark">
-      <div class="copy">
-        <h2 class="rx rx--h" data-in="0 0.2">
-          <span class="rx__raw" aria-hidden="true">### hovermind</span>
-          <span class="rx__out h kin">Hovermind</span>
-        </h2>
-        <p class="rx rx--role" data-in="0.1 0.3">
-          <span class="rx__raw" aria-hidden="true">*browser extension, 2025*</span>
-          <span class="rx__out role">Browser extension, 2025</span>
-        </p>
-        <ul class="lines">
-          <li data-in="0.3 0.44">Select any text and get it explained using the page around it.</li>
-          <li data-in="0.44 0.58">TypeScript in Chrome, FastAPI behind it.</li>
+    <!-- 6 · Spotlight: the app in the red dress -->
+    <section class="scene s-dress" data-name="the red dress" data-len="260" data-trans="45" data-rain="0.34" data-tone="grey">
+      <div class="col">
+        <h2 class="hd hd--long" data-decode data-in="0 0.2">Were you listening, or looking at the app in the red dress?</h2>
+        <p class="meta" data-decode data-in="0.12 0.26">Spotlight // iOS app // 2024</p>
+        <ul class="lns">
+          <li data-decode data-in="0.3 0.5">A social network for creators, built in React Native on Supabase.</li>
+          <li data-decode data-in="0.5 0.7">A Postgres schema indexed to stay quick as the feed grows.</li>
         </ul>
       </div>
-      <div class="art">
-        <p class="passage" aria-hidden="true" data-in="0.2 0.4">A variational autoencoder does not memorise a scan. It squeezes each one into a few hundred numbers and rebuilds the image from those. That squeezed version is the
-          <span class="mark" data-in="0.48 0.62">latent space.<i class="tip" data-in="0.64 0.78">The short description a model keeps in place of the full image. Two scanners can be compared here even when their pictures disagree.</i></span></p>
+      <div class="vis">
+        <div class="phone" data-in="0.06 0.4">
+          <img src="/assets/spotlight-screen.png" alt="Spotlight home feed" width="316" height="682" loading="lazy">
+        </div>
       </div>
     </section>
 
-    <!-- ## Let's ship something. -->
-    <section class="scene s-close" data-name="Contact" data-len="150" data-trans="55" data-enter="up" data-hud="dark" data-rest="0.9">
-      <div class="close">
-        <h2 class="rx rx--h" data-in="0 0.42">
-          <span class="rx__raw" aria-hidden="true">## let's ship *something.*</span>
-          <span class="rx__out title title--close kin">Let's ship <em>something.</em></span>
-        </h2>
-        <ul class="links">
-          <li class="rx rx--link" data-in="0.36 0.66">
-            <span class="rx__raw" aria-hidden="true">[github](https://github.com/rahulharikumarr)</span>
-            <a class="rx__out" href="https://github.com/rahulharikumarr" target="_blank" rel="noopener">GitHub</a>
-          </li>
-          <li class="rx rx--link" data-in="0.48 0.78">
-            <span class="rx__raw" aria-hidden="true">[normal ai](https://trynormal.ai)</span>
-            <a class="rx__out" href="https://trynormal.ai" target="_blank" rel="noopener">Normal AI</a>
-          </li>
-          <li class="rx rx--link" data-in="0.6 0.9">
-            <span class="rx__raw" aria-hidden="true">[back to the top](#top)</span>
-            <a class="rx__out" href="#top">Back to the top</a>
-          </li>
+    <!-- 7 · Hovermind: I know kung fu -->
+    <section class="scene s-kungfu" data-name="i know kung fu" data-len="280" data-trans="45">
+      <div class="col">
+        <h2 class="hd" data-decode data-in="0.6 0.76">I know latent space.</h2>
+        <p class="meta" data-decode data-in="0 0.14">Hovermind // Browser extension // 2025</p>
+        <ul class="lns">
+          <li data-decode data-in="0.06 0.24">Select any text on a page. Hovermind explains it using everything around it.</li>
+          <li data-decode data-in="0.24 0.38">TypeScript in Chrome, FastAPI behind it.</li>
+          <li class="showme" data-decode data-in="0.8 0.9">Show me.</li>
         </ul>
       </div>
-      <p class="comment comment--in" data-in="0.86 0.98">&lt;!-- last edited in los angeles. --&gt;</p>
+      <div class="vis">
+        <div class="upload" data-in="0.14 0.3" aria-hidden="true">
+          <p class="upload__text">a variational autoencoder squeezes each scan into a <mark data-in="0.28 0.38">latent space</mark> and rebuilds it from that alone.</p>
+          <p class="upload__label" data-decode data-in="0.36 0.46">uploading: latent_space</p>
+          <i class="upload__bar" data-in="0.4 0.62"><i></i></i>
+          <p class="upload__label" data-decode data-in="0.62 0.7">upload complete.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · the exits -->
+    <section class="scene s-exit" data-name="exit" data-len="170" data-trans="45" data-rain="0.5" data-rest="0.92">
+      <div class="col col--wide">
+        <h2 class="hd" data-decode data-in="0 0.26">Need an exit?</h2>
+        <ul class="lines">
+          <li data-in="0.24 0.42"><span>hardline 01</span><a href="https://github.com/rahulharikumarr" target="_blank" rel="noopener">github.com/rahulharikumarr</a></li>
+          <li data-in="0.36 0.54"><span>hardline 02</span><a href="https://trynormal.ai" target="_blank" rel="noopener">trynormal.ai</a></li>
+          <li data-in="0.48 0.66"><span>blue pill</span><a href="#top">back to the start</a></li>
+        </ul>
+        <p class="last" data-decode data-in="0.68 0.94">What we build from here is up to you.</p>
+      </div>
     </section>
   </main>
 
-  <nav class="route" aria-label="Sections"></nav>
-  <i class="grain" aria-hidden="true"></i>
+  <nav class="route" aria-label="Sections">
+    <i class="route__line"></i>
+    <svg class="rabbit" viewBox="0 0 26 20" aria-hidden="true">
+      <ellipse cx="11" cy="13" rx="8" ry="5.4" />
+      <circle cx="19.6" cy="9.2" r="4" />
+      <ellipse cx="18" cy="3.4" rx="1.5" ry="3.9" transform="rotate(-12 18 3.4)" />
+      <ellipse cx="21.2" cy="3.6" rx="1.4" ry="3.7" transform="rotate(14 21.2 3.6)" />
+      <circle cx="3" cy="11.6" r="2.2" />
+      <ellipse cx="8" cy="18.4" rx="4" ry="1.3" />
+      <ellipse cx="16.4" cy="18.5" rx="2.6" ry="1.1" />
+    </svg>
+  </nav>
+  <i class="crt" aria-hidden="true"></i>
   <div class="spacer" aria-hidden="true"></div>
+
+  <svg class="defs" aria-hidden="true">
+    <defs>
+      <g id="cat">
+        <path class="cat__tail" d="M46 58C14 56 12 22 30 14" />
+        <rect x="52" y="74" width="9" height="36" rx="4" />
+        <rect x="68" y="74" width="9" height="36" rx="4" />
+        <rect x="116" y="74" width="9" height="36" rx="4" />
+        <rect x="131" y="74" width="9" height="36" rx="4" />
+        <rect x="40" y="44" width="106" height="40" rx="20" />
+        <path d="M137 32l4-21 11 16zM152 27l11-16 3 21z" />
+        <circle cx="152" cy="42" r="19" />
+        <circle class="cat__eye" cx="160" cy="40" r="2.6" />
+      </g>
+    </defs>
+  </svg>
 
 </body>
 
